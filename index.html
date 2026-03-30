@@ -288,32 +288,25 @@
       flex-wrap: wrap;
     }
     .hero-scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 8px;
-      z-index: 1;
+      justify-content: center;
+      padding: 0.5rem 0 0.75rem;
     }
-    .hero-scroll-hint span {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      opacity: 0.6;
+    .scroll-chevron {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: var(--red);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.5;
+      animation: chevronBob 2.2s ease-in-out infinite;
     }
-    .scroll-line {
-      width: 1px;
-      height: 48px;
-      background: linear-gradient(to bottom, var(--red), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.1); }
+    @keyframes chevronBob {
+      0%, 100% { opacity: 0.35; transform: translateY(0); }
+      50% { opacity: 0.75; transform: translateY(5px); }
     }
     .hero-stat-strip {
       position: absolute;
@@ -1143,9 +1136,6 @@
       </div>
     </div>
   </div>
-  <div class="hero-scroll-hint">
-    <div class="scroll-line"></div>
-  </div>
   <div class="hero-stat-strip">
     <div class="container">
       <div class="hero-stats">
@@ -1161,6 +1151,9 @@
           <span class="hero-stat-num">∞</span>
           <span class="hero-stat-label">Kingdom Impact</span>
         </div>
+      </div>
+      <div class="hero-scroll-hint">
+        <svg class="scroll-chevron" viewBox="0 0 24 24"><polyline points="6 10 12 16 18 10"/></svg>
       </div>
     </div>
   </div>
