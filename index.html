@@ -250,6 +250,30 @@
       z-index: 1;
       max-width: 820px;
     }
+    .hero-globe {
+      position: absolute;
+      top: 50%;
+      right: -4%;
+      transform: translateY(-54%);
+      width: min(520px, 44vw);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      animation: globeReveal 2s var(--ease-out) 0.6s forwards;
+    }
+    @keyframes globeReveal {
+      to { opacity: 1; }
+    }
+    /* Pulsing center light dot */
+    .globe-center-pulse {
+      transform-origin: 250px 250px;
+      animation: lightPulse 3s ease-in-out infinite;
+    }
+    @keyframes lightPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.6); }
+    }
+    @media (max-width: 900px) { .hero-globe { display: none; } }
     .hero-eyebrow {
       display: flex;
       align-items: center;
@@ -343,6 +367,96 @@
       color: var(--ink-soft);
       margin-top: 0.35rem;
       display: block;
+    }
+
+    /* ════════════════════════════════════════════════════════
+       PROBLEM VALIDATION
+    ════════════════════════════════════════════════════════ */
+    .problem {
+      padding-block: var(--gap-xl);
+      background: var(--cream-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .problem-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-xl);
+      align-items: start;
+    }
+    .problem-left {}
+    .problem-headline {
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-top: 0.75rem;
+      margin-bottom: var(--gap-md);
+    }
+    .problem-headline em {
+      font-style: italic;
+      color: var(--red);
+    }
+    .problem-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      max-width: 480px;
+    }
+    .problem-tensions {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-top: 1rem;
+    }
+    .problem-tension {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding-block: 1.75rem;
+      border-bottom: 1px solid rgba(193,59,40,0.1);
+    }
+    .problem-tension:first-child { border-top: 1px solid rgba(193,59,40,0.1); }
+    .problem-tension-mark {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+      margin-top: 0.55em;
+      opacity: 0.5;
+    }
+    .problem-tension-text {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+    .problem-tension-text em {
+      font-style: italic;
+      color: var(--red);
+    }
+    .problem-bridge {
+      margin-top: var(--gap-md);
+      padding: 2rem 2.25rem;
+      background: var(--ink);
+      border-radius: 3px;
+      color: var(--cream);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 300;
+      line-height: 1.55;
+      font-style: italic;
+    }
+    .problem-bridge strong {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--red-light);
+    }
+    @media (max-width: 800px) {
+      .problem-inner { grid-template-columns: 1fr; gap: var(--gap-lg); }
     }
 
     /* ════════════════════════════════════════════════════════
@@ -723,6 +837,138 @@
     }
 
     /* ════════════════════════════════════════════════════════
+       CURATED EXPERIENCES
+    ════════════════════════════════════════════════════════ */
+    .experiences {
+      padding-block: var(--gap-xl);
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .experiences-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-xl);
+      align-items: end;
+      margin-bottom: var(--gap-lg);
+      padding-bottom: var(--gap-lg);
+      border-bottom: 1px solid rgba(245,239,227,0.1);
+    }
+    .experiences-headline {
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-top: 0.75rem;
+    }
+    .experiences-headline em {
+      font-style: italic;
+      color: var(--red-light);
+    }
+    .experiences-intro {
+      font-size: 1rem;
+      color: rgba(245,239,227,0.65);
+      line-height: 1.75;
+      padding-bottom: 0.25rem;
+    }
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+    }
+    .experience-item {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 2.5rem;
+      align-items: center;
+      padding-block: 2.75rem;
+      border-bottom: 1px solid rgba(245,239,227,0.08);
+      transition: background 0.25s;
+      cursor: default;
+      border-radius: 2px;
+      margin-inline: -1.5rem;
+      padding-inline: 1.5rem;
+    }
+    .experience-item:last-child { border-bottom: none; }
+    .experience-item:hover { background: rgba(245,239,227,0.04); }
+    .experience-num {
+      font-family: var(--font-display);
+      font-size: 4.5rem;
+      font-weight: 300;
+      color: var(--cream);
+      opacity: 0.1;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      transition: opacity 0.25s;
+      text-align: right;
+    }
+    .experience-item:hover .experience-num { opacity: 0.22; }
+    .experience-body {}
+    .experience-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red-light);
+      background: rgba(193,59,40,0.2);
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      margin-bottom: 0.65rem;
+    }
+    .experience-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .experience-desc {
+      font-size: 0.92rem;
+      color: rgba(245,239,227,0.6);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+    .experience-arrow {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(245,239,227,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.3s var(--ease-spring);
+    }
+    .experience-arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: var(--red-light);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.6;
+      transition: opacity 0.25s;
+    }
+    .experience-item:hover .experience-arrow {
+      background: var(--red);
+      border-color: var(--red);
+      transform: rotate(45deg);
+    }
+    .experience-item:hover .experience-arrow svg {
+      stroke: white;
+      opacity: 1;
+    }
+
+    @media (max-width: 860px) {
+      .experiences-header { grid-template-columns: 1fr; gap: var(--gap-md); }
+      .experience-item { grid-template-columns: 60px 1fr; gap: 1.5rem; }
+      .experience-arrow { display: none; }
+      .experience-num { font-size: 3rem; }
+    }
+
+    /* ════════════════════════════════════════════════════════
        INVESTMENT
     ════════════════════════════════════════════════════════ */
     .investment {
@@ -954,6 +1200,214 @@
     }
 
     /* ════════════════════════════════════════════════════════
+       TESTIMONIALS
+    ════════════════════════════════════════════════════════ */
+    .testimonials {
+      padding-block: var(--gap-xl);
+      background: var(--ink);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonials::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.15em;
+      left: -0.05em;
+      font-family: var(--font-display);
+      font-size: clamp(18rem, 30vw, 28rem);
+      font-weight: 700;
+      color: rgba(245,239,227,0.025);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: var(--gap-lg);
+      position: relative;
+      z-index: 1;
+    }
+    .testimonials-headline {
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-top: 0.75rem;
+    }
+    .testimonials-headline em { font-style: italic; color: var(--red-light); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-md);
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-card {
+      padding: 3rem;
+      border: 1px solid rgba(245,239,227,0.08);
+      border-radius: 3px;
+      background: rgba(245,239,227,0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(193,59,40,0.35);
+      background: rgba(193,59,40,0.06);
+    }
+    .testimonial-quote-mark {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--red-light);
+      opacity: 0.4;
+      line-height: 0.6;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .testimonial-text {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.6;
+      flex: 1;
+    }
+    .testimonial-attr {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(245,239,227,0.08);
+    }
+    .testimonial-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(193,59,40,0.2);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--red-light);
+    }
+    .testimonial-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--cream);
+      display: block;
+    }
+    .testimonial-role {
+      font-size: 0.78rem;
+      color: rgba(245,239,227,0.45);
+      letter-spacing: 0.06em;
+    }
+    @media (max-width: 720px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonial-card { padding: 2rem; }
+    }
+
+    /* ════════════════════════════════════════════════════════
+       FAQ
+    ════════════════════════════════════════════════════════ */
+    .faq {
+      padding-block: var(--gap-xl);
+      background: var(--cream-dark);
+    }
+    .faq-inner {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: var(--gap-xl);
+      align-items: start;
+    }
+    .faq-left {
+      position: sticky;
+      top: 100px;
+    }
+    .faq-headline {
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-top: 0.75rem;
+      margin-bottom: var(--gap-md);
+    }
+    .faq-headline em { font-style: italic; color: var(--red); }
+    .faq-left-body {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+    }
+    details.faq-item {
+      border-bottom: 1px solid rgba(193,59,40,0.12);
+    }
+    details.faq-item:first-child { border-top: 1px solid rgba(193,59,40,0.12); }
+    summary.faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding-block: 1.6rem;
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--ink);
+      transition: color 0.2s;
+      user-select: none;
+    }
+    summary.faq-question::-webkit-details-marker { display: none; }
+    summary.faq-question:hover { color: var(--red); }
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid rgba(193,59,40,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.25s, border-color 0.25s, transform 0.3s var(--ease-spring);
+    }
+    .faq-icon svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: var(--red);
+      stroke-width: 2;
+      stroke-linecap: round;
+      transition: transform 0.3s var(--ease-spring);
+    }
+    details[open] summary .faq-icon {
+      background: var(--red);
+      border-color: var(--red);
+      transform: rotate(45deg);
+    }
+    details[open] summary .faq-icon svg { stroke: white; }
+    details[open] summary { color: var(--red); }
+    .faq-answer {
+      padding-bottom: 1.6rem;
+      font-size: 0.97rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      max-width: 580px;
+    }
+    @media (max-width: 860px) {
+      .faq-inner { grid-template-columns: 1fr; }
+      .faq-left { position: static; }
+    }
+
+    /* ════════════════════════════════════════════════════════
        CTA SECTION
     ════════════════════════════════════════════════════════ */
     .cta-section {
@@ -974,20 +1428,6 @@
       pointer-events: none;
     }
     /* Large decorative text behind */
-    .cta-section::after {
-      content: 'APPLY';
-      position: absolute;
-      bottom: -0.2em;
-      right: -0.05em;
-      font-family: var(--font-display);
-      font-size: clamp(10rem, 25vw, 22rem);
-      font-weight: 700;
-      color: rgba(255,255,255,0.05);
-      letter-spacing: -0.04em;
-      line-height: 1;
-      pointer-events: none;
-      white-space: nowrap;
-    }
     .cta-inner {
       position: relative;
       z-index: 1;
@@ -1048,6 +1488,181 @@
       transform: translateY(-2px);
     }
     .btn-ghost:active { transform: translateY(0); }
+    /* Deadline badge */
+    .deadline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    .deadline-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ff9f9f;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+    /* Interest list form */
+    .interest-form {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 440px;
+      margin-inline: auto;
+      margin-top: 1.5rem;
+    }
+    .interest-input {
+      flex: 1;
+      padding: 0.8rem 1.2rem;
+      border-radius: 2px;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .interest-input::placeholder { color: rgba(255,255,255,0.45); }
+    .interest-input:focus {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.15);
+    }
+    .interest-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      max-width: 440px;
+      margin-inline: auto;
+    }
+    .interest-divider::before, .interest-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+    .interest-divider span {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ════════════════════════════════════════════════════════
+       DIRECTOR
+    ════════════════════════════════════════════════════════ */
+    .director {
+      padding-block: var(--gap-xl);
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .director::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -12%;
+      transform: translateY(-50%);
+      width: 45vw;
+      max-width: 560px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(193,59,40,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .director-inner {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: var(--gap-xl);
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .director-photo-wrap {
+      position: relative;
+    }
+    .director-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 3px;
+      display: block;
+      filter: grayscale(15%);
+    }
+    /* Red accent corner */
+    .director-photo-wrap::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      width: 64px;
+      height: 64px;
+      border-top: 2px solid var(--red);
+      border-left: 2px solid var(--red);
+      border-radius: 1px;
+    }
+    .director-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      right: -12px;
+      width: 64px;
+      height: 64px;
+      border-bottom: 2px solid var(--red);
+      border-right: 2px solid var(--red);
+      border-radius: 1px;
+    }
+    .director-content {
+      padding-left: var(--gap-md);
+    }
+    .director-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-top: 0.75rem;
+      margin-bottom: 0.4rem;
+    }
+    .director-title {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 2rem;
+    }
+    .director-bio {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+    .director-bio p + p { margin-top: 0.9rem; }
+
+    @media (max-width: 860px) {
+      .director-inner {
+        grid-template-columns: 1fr;
+        gap: var(--gap-lg);
+      }
+      .director-photo-wrap { max-width: 320px; }
+      .director-content { padding-left: 0; }
+    }
 
     /* ════════════════════════════════════════════════════════
        FOOTER
@@ -1119,10 +1734,75 @@
 <!-- ─── HERO ──────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-glow"></div>
+
+  <!-- Globe illustration — echoes logo motif, "sent to the world" -->
+  <div class="hero-globe" aria-hidden="true">
+    <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="gc">
+          <circle cx="250" cy="250" r="232"/>
+        </clipPath>
+        <radialGradient id="gg" cx="42%" cy="44%" r="55%">
+          <stop offset="0%" stop-color="#C13B28" stop-opacity="0.1"/>
+          <stop offset="100%" stop-color="#C13B28" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Soft background glow -->
+      <circle cx="250" cy="250" r="232" fill="url(#gg)"/>
+
+      <!-- Globe wireframe -->
+      <g stroke="#C13B28" fill="none">
+        <!-- Outer circle -->
+        <circle cx="250" cy="250" r="232" stroke-width="0.8" opacity="0.22"/>
+
+        <!-- Latitude lines -->
+        <g opacity="0.14" stroke-width="0.7">
+          <ellipse cx="250" cy="250" rx="232" ry="81"/>
+          <ellipse cx="250" cy="134" rx="201" ry="70"/>
+          <ellipse cx="250" cy="366" rx="201" ry="70"/>
+          <ellipse cx="250" cy="49"  rx="116" ry="41"/>
+          <ellipse cx="250" cy="451" rx="116" ry="41"/>
+        </g>
+
+        <!-- Meridians — clipped to sphere -->
+        <g clip-path="url(#gc)" opacity="0.14" stroke-width="0.7">
+          <line x1="250" y1="18" x2="250" y2="482"/>
+          <ellipse cx="250" cy="250" rx="116" ry="232"/>
+          <ellipse cx="250" cy="250" rx="201" ry="232"/>
+        </g>
+      </g>
+
+      <!-- Destination dots — world locations -->
+      <g fill="#C13B28">
+        <!-- Raleigh/home -->
+        <circle cx="250" cy="250" r="4" opacity="0.6" class="globe-center-pulse"/>
+        <!-- International dots -->
+        <circle cx="316" cy="196" r="2.5" opacity="0.4"/>
+        <circle cx="174" cy="218" r="2"   opacity="0.35"/>
+        <circle cx="294" cy="314" r="2"   opacity="0.35"/>
+        <circle cx="162" cy="168" r="1.8" opacity="0.3"/>
+        <circle cx="348" cy="272" r="2"   opacity="0.35"/>
+        <circle cx="228" cy="152" r="1.8" opacity="0.3"/>
+        <circle cx="336" cy="338" r="1.8" opacity="0.28"/>
+        <circle cx="194" cy="302" r="1.5" opacity="0.25"/>
+      </g>
+
+      <!-- Sending lines from center — "sent out" -->
+      <g stroke="#C13B28" stroke-width="0.6" opacity="0.12">
+        <line x1="250" y1="250" x2="316" y2="196"/>
+        <line x1="250" y1="250" x2="174" y2="218"/>
+        <line x1="250" y1="250" x2="294" y2="314"/>
+        <line x1="250" y1="250" x2="348" y2="272"/>
+        <line x1="250" y1="250" x2="228" y2="152"/>
+        <line x1="250" y1="250" x2="336" y2="338"/>
+      </g>
+    </svg>
+  </div>
   <div class="container">
     <div class="hero-content">
       <div class="hero-eyebrow reveal">
-        <span class="eyebrow">2-Year Cohort Program</span>
+        <span class="eyebrow">Summit Church · Raleigh-Durham, NC &nbsp;·&nbsp; Applications close May 31</span>
       </div>
       <h1 class="display-serif hero-headline reveal reveal-delay-1">
         Your work is<br /><em>your calling.</em>
@@ -1159,6 +1839,46 @@
   </div>
 </section>
 
+<!-- ─── PROBLEM VALIDATION ───────────────────────────── -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="problem-inner">
+      <div class="problem-left">
+        <span class="eyebrow reveal">Sound Familiar?</span>
+        <h2 class="display-serif problem-headline reveal reveal-delay-1">
+          You feel<br />the <em>tension.</em>
+        </h2>
+        <p class="problem-body reveal reveal-delay-2">
+          You're ambitious, faith-filled, and early in your career. But somewhere between Sunday and Monday morning, something gets lost. You're not alone — and it doesn't have to stay that way.
+        </p>
+      </div>
+      <div class="problem-right">
+        <div class="problem-tensions">
+          <div class="problem-tension reveal">
+            <div class="problem-tension-mark"></div>
+            <p class="problem-tension-text">Your faith and your work feel like <em>two separate lives</em> you're trying to keep balanced.</p>
+          </div>
+          <div class="problem-tension reveal reveal-delay-1">
+            <div class="problem-tension-mark"></div>
+            <p class="problem-tension-text">You want to pursue excellence in your career <em>and</em> something beyond it — but nobody's showing you how.</p>
+          </div>
+          <div class="problem-tension reveal reveal-delay-2">
+            <div class="problem-tension-mark"></div>
+            <p class="problem-tension-text">You're surrounded by peers, but feel like <em>nobody around you is asking the same questions.</em></p>
+          </div>
+          <div class="problem-tension reveal reveal-delay-3">
+            <div class="problem-tension-mark"></div>
+            <p class="problem-tension-text">You sense God has a purpose for your work — but <em>clarity feels just out of reach.</em></p>
+          </div>
+        </div>
+        <div class="problem-bridge reveal reveal-delay-4">
+          Renewal Residency exists because <strong>the tension you're feeling is real</strong> — and it deserves more than a sermon series or a career coach. It deserves a community, a guide, and a two-year journey.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── ABOUT ─────────────────────────────────────────── -->
 <section class="about" id="about">
   <div class="about-bg-arc"></div>
@@ -1175,7 +1895,7 @@
       <div class="about-top-right reveal reveal-delay-2">
         <div class="about-body">
           <p>
-            We're combining the best of talent development and global mobility from the corporate world with best-in-class ministry and missions leadership development — forming a 2-year residency unlike anything else.
+            Renewal Residency is a program of Summit Church in Raleigh-Durham, NC. We're combining the best of talent development and global mobility from the corporate world with best-in-class ministry and missions leadership development — forming a 2-year residency unlike anything else.
           </p>
           <p>
             Graduates leave equipped to live out their calling in the marketplace and help bring about kingdom restoration in the world through their daily work.
@@ -1300,6 +2020,88 @@
   </div>
 </section>
 
+<!-- ─── CURATED EXPERIENCES ──────────────────────────── -->
+<section class="experiences" id="experiences">
+  <div class="container">
+
+    <div class="experiences-header">
+      <div>
+        <span class="eyebrow reveal">What You'll Experience</span>
+        <h2 class="display-serif experiences-headline reveal reveal-delay-1">
+          Beyond the<br /><em>monthly rhythm.</em>
+        </h2>
+      </div>
+      <p class="experiences-intro reveal reveal-delay-2">
+        In addition to the monthly structure, Renewal Residency includes a set of curated experiences throughout the two years — each one designed to expand your vision, deepen your network, and ground your calling in something tangible.
+      </p>
+    </div>
+
+    <div class="experience-list">
+
+      <div class="experience-item reveal">
+        <div class="experience-num">01</div>
+        <div class="experience-body">
+          <span class="experience-tag">Annual Event</span>
+          <h3 class="experience-title">Faith & Work Conference</h3>
+          <p class="experience-desc">A curated gathering at the intersection of faith and professional life. Hear from practitioners, leaders, and thinkers who are living out the integration you're pursuing — and connect with others doing the same.</p>
+        </div>
+        <div class="experience-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="experience-item reveal reveal-delay-1">
+        <div class="experience-num">02</div>
+        <div class="experience-body">
+          <span class="experience-tag">Global Immersion</span>
+          <h3 class="experience-title">International Networking & Vision Trip</h3>
+          <p class="experience-desc">Travel with your cohort to meet global leaders, experience church planting on the ground, and see how the marketplace and mission intersect beyond American borders. A perspective-altering week.</p>
+        </div>
+        <div class="experience-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="experience-item reveal reveal-delay-2">
+        <div class="experience-num">03</div>
+        <div class="experience-body">
+          <span class="experience-tag">Domestic Immersion</span>
+          <h3 class="experience-title">Domestic Church Planting & Networking Trip</h3>
+          <p class="experience-desc">Visit a church plant in another U.S. city, meet the team, and see how professionals are embedding themselves in new communities for the sake of the gospel. Builds your vision for what's possible close to home.</p>
+        </div>
+        <div class="experience-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="experience-item reveal reveal-delay-3">
+        <div class="experience-num">04</div>
+        <div class="experience-body">
+          <span class="experience-tag">Marketplace Access</span>
+          <h3 class="experience-title">Visit Local Business Headquarters</h3>
+          <p class="experience-desc">Get behind the scenes at leading companies in the Raleigh-Durham area. Meet executives who integrate their faith in the workplace and gain access to networks that aren't available anywhere else.</p>
+        </div>
+        <div class="experience-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+      <div class="experience-item reveal reveal-delay-4">
+        <div class="experience-num">05</div>
+        <div class="experience-body">
+          <span class="experience-tag">Personal Growth</span>
+          <h3 class="experience-title">Personalized Development Plan</h3>
+          <p class="experience-desc">Work alongside your guide to build a development plan tailored to where you are and where you're going — covering career trajectory, spiritual formation, and leadership growth over the two years.</p>
+        </div>
+        <div class="experience-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ─── INVESTMENT ────────────────────────────────────── -->
 <section class="investment" id="investment">
   <div class="container">
@@ -1415,7 +2217,7 @@
       <div class="diff-item reveal">
         <div class="diff-item-icon">I</div>
         <h3 class="diff-item-title">Church-Rooted Formation</h3>
-        <p class="diff-item-desc">Renewal Residency is partnered with a local church — your formation is embedded in a living community, not isolated to a curriculum.</p>
+        <p class="diff-item-desc">Renewal Residency is a program of Summit Church in Raleigh-Durham — your formation is embedded in a living community, not isolated to a curriculum.</p>
       </div>
       <div class="diff-item reveal reveal-delay-1">
         <div class="diff-item-icon">II</div>
@@ -1436,19 +2238,164 @@
   </div>
 </section>
 
+<!-- ─── DIRECTOR ─────────────────────────────────────── -->
+<section class="director" id="director">
+  <div class="container">
+    <div class="director-inner">
+      <div class="director-photo-wrap reveal">
+        <img class="director-photo" src="https://placehold.co/380x507/e8ddd0/c13b28" alt="Julie Scrudato" />
+      </div>
+      <div class="director-content">
+        <span class="eyebrow reveal">Program Director</span>
+        <h2 class="director-name reveal reveal-delay-1">Julie Scrudato</h2>
+        <p class="director-title reveal reveal-delay-2">Director, Renewal Residency · Summit Church</p>
+        <div class="director-bio reveal reveal-delay-3">
+          <p>Julie Scrudato is the founding director of Renewal Residency, bringing years of experience in leadership development and marketplace ministry to the program. She is passionate about equipping the next generation of professionals to integrate their faith with their daily work in meaningful, lasting ways. Julie is based in Raleigh-Durham and is deeply rooted in the Summit Church community.</p>
+        </div>
+        <div class="reveal reveal-delay-4">
+          <a href="mailto:jscrudato@summitchurch.com" class="btn btn-outline">Contact Julie with Questions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─────────────────────────────────── -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <span class="eyebrow reveal" style="color:var(--red-light);">Heard From the Community</span>
+      <h2 class="display-serif testimonials-headline reveal reveal-delay-1">
+        Words from those who've <em>been there.</em>
+      </h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div>
+          <span class="testimonial-quote-mark">"</span>
+          <p class="testimonial-text">Renewal Residency gave me language for something I'd always felt but couldn't name. I went from seeing my job as a distraction from "real ministry" to understanding it as the very place God had called me. I'm a better professional, a better leader, and honestly, a better person because of this program.</p>
+        </div>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <span class="testimonial-name">Alex M.</span>
+            <span class="testimonial-role">Software Engineer · Cohort Participant</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div>
+          <span class="testimonial-quote-mark">"</span>
+          <p class="testimonial-text">I'd read the books and listened to the podcasts, but nothing compared to having a guide in my corner who actually works in healthcare like I do. The conversations we had were unlike anything I'd experienced in a church setting — practical, honest, and deeply rooted in faith. I can't recommend it enough.</p>
+        </div>
+        <div class="testimonial-attr">
+          <div class="testimonial-avatar">S</div>
+          <div>
+            <span class="testimonial-name">Sarah K.</span>
+            <span class="testimonial-role">Healthcare Professional · Cohort Participant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────────────── -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-inner">
+      <div class="faq-left">
+        <span class="eyebrow reveal">Common Questions</span>
+        <h2 class="display-serif faq-headline reveal reveal-delay-1">
+          Still have<br /><em>questions?</em>
+        </h2>
+        <p class="faq-left-body reveal reveal-delay-2">
+          We want to make sure this is the right fit before you apply. If you don't see your question here, reach out to Julie directly at <a href="mailto:jscrudato@summitchurch.com" style="color:var(--red); text-decoration:underline; text-underline-offset:3px;">jscrudato@summitchurch.com</a>.
+        </p>
+      </div>
+      <div class="faq-list reveal reveal-delay-1">
+
+        <details class="faq-item" open>
+          <summary class="faq-question">
+            Is this only for people at Summit Church?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="faq-answer">No — Renewal Residency is open to anyone in the Raleigh-Durham area who shares our values around faith, work, and mission. You don't need to be a member of Summit Church to apply, though the program is deeply rooted in the Summit community.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            How much does it cost?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="faq-answer">The program fee is $5,000 per year for a two-year commitment. This covers your guide relationship, cohort forums, curated experiences, and vision trips. If cost is a barrier, reach out to us — we want to have that conversation.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            Can I do this while working full-time?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="faq-answer">Yes — the program is designed for working professionals. The monthly commitment is 5–10 hours and all core activities are scheduled with full-time work in mind. The international and domestic trips will require some PTO.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            What industries is this designed for?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="faq-answer">All of them. We've had residents from business, healthcare, education, tech, law, finance, and more. Your guide will be matched from your specific industry, so the mentorship is always relevant to your context.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            When does the next cohort begin?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="faq-answer">The next cohort begins in Fall 2026. Applications close May 31, 2026. After submitting your application, you'll be invited to an interest meeting and a brief interview before a final decision is made.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            How many people are in a cohort?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="faq-answer">Cohorts are kept intentionally small to maintain a high-quality experience and genuine community. We limit enrollment to ensure every resident gets meaningful attention from their guide and real relationships within the cohort.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            What happens after the two years?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </summary>
+          <p class="faq-answer">You become part of the Renewal alumni network — a growing community of professionals in the Raleigh-Durham area and beyond who share your conviction that work and faith belong together. We're building something that lasts well beyond the program itself.</p>
+        </details>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── CTA ───────────────────────────────────────────── -->
 <section class="cta-section" id="apply">
   <div class="container cta-inner">
-    <p class="cta-eyebrow reveal">Ready to Begin?</p>
+    <div class="reveal">
+      <span class="deadline-badge"><span class="deadline-dot"></span>Applications close May 31, 2026</span>
+    </div>
     <h2 class="cta-headline reveal reveal-delay-1">
       God has <em>more</em><br />for your work.
     </h2>
     <p class="cta-desc reveal reveal-delay-2">
-      Take the first step. Fill out the interest form and we'll invite you to an upcoming interest meeting where you can learn more and ask questions.
+      The next cohort begins Fall 2026. Spots are limited — take the first step now and we'll invite you to an upcoming interest meeting.
     </p>
     <div class="cta-buttons reveal reveal-delay-3">
       <a href="https://docs.google.com/forms/d/1p0MLWUzDwsnzmNFL1jYBDLTom0FYOu9bl2Ms2HtKIt0/edit" target="_blank" class="btn btn-white btn-primary">Apply to the Residency</a>
-      <a href="mailto:info@renewalresidency.com" class="btn btn-ghost">Ask a Question</a>
+      <a href="mailto:jscrudato@summitchurch.com" class="btn btn-ghost">Ask a Question</a>
+    </div>
+    <div class="interest-divider reveal reveal-delay-4"><span>or</span></div>
+    <div class="interest-form reveal reveal-delay-4">
+      <input type="email" class="interest-input" placeholder="Your email address" />
+      <a href="mailto:jscrudato@summitchurch.com?subject=Interest List — Renewal Residency" class="btn btn-ghost" style="white-space:nowrap;">Join Interest List</a>
     </div>
   </div>
 </section>
@@ -1459,7 +2406,7 @@
     <div class="footer-logo">
       <img src="brand_assets/Renewal logo.jpg" alt="Renewal Residency" />
     </div>
-    <p class="footer-text">© 2026 Renewal Residency. Faith. Work. Mission.</p>
+    <p class="footer-text">© 2026 Renewal Residency · A ministry of Summit Church, Raleigh-Durham, NC</p>
     <a href="https://docs.google.com/forms/d/1p0MLWUzDwsnzmNFL1jYBDLTom0FYOu9bl2Ms2HtKIt0/edit" target="_blank" class="footer-link">Apply Now →</a>
   </div>
 </footer>
