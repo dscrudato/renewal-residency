@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Renewal Residency — Faith. Work. Mission.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black:      #0D0906;
+      --cream:      #F5EFE3;
+      --cream-dim:  rgba(245,239,227,0.5);
+      --cream-faint:rgba(245,239,227,0.12);
+      --red:        #C13B28;
+      --line:       rgba(245,239,227,0.1);
+      --font-d:     'Cormorant Garamond', Georgia, serif;
+      --font-b:     'Jost', sans-serif;
+      --ease-out:   cubic-bezier(0.165, 0.84, 0.44, 1);
+      --ease-spring:cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-b);
+      font-size: 1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Grain */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
+    }
+
+    .container { width: min(1200px, 92vw); margin-inline: auto; }
+
+    /* Labels */
+    .lbl {
+      font-family: var(--font-b);
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+    .lbl-red { color: var(--red); opacity: 0.8; }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.22s; }
+    .d3 { transition-delay: 0.34s; }
+    .d4 { transition-delay: 0.46s; }
+    .d5 { transition-delay: 0.58s; }
+
+    /* Section divider line */
+    .sline {
+      width: 100%; height: 1px;
+      background: var(--line);
+      margin-bottom: 3.5rem;
+    }
+
+    /* ─── PILL BUTTON ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--font-b); font-size: 0.72rem;
+      font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 0.72rem 1.6rem; border-radius: 100px;
+      border: 1px solid rgba(245,239,227,0.3);
+      color: var(--cream);
+      position: relative; overflow: hidden; cursor: pointer;
+      transition: border-color 0.4s, color 0.4s var(--ease-out);
+    }
+    .btn::before {
+      content: ''; position: absolute; inset: 0; border-radius: 100px;
+      background: var(--cream); transform: scale(0); transform-origin: center;
+      transition: transform 0.5s var(--ease-out);
+    }
+    .btn:hover::before { transform: scale(1); }
+    .btn:hover { color: var(--black); border-color: var(--cream); }
+    .btn span { position: relative; z-index: 1; }
+
+    .btn-red { border-color: rgba(193,59,40,0.6); }
+    .btn-red::before { background: var(--red); }
+    .btn-red:hover { color: var(--cream); border-color: var(--red); }
+
+    .btn-lg { font-size: 0.8rem; padding: 1rem 2.25rem; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.75rem 0;
+      transition: padding 0.5s var(--ease-out), background 0.5s var(--ease-out), border-color 0.5s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      padding: 1rem 0;
+      background: rgba(13,9,6,0.94);
+      backdrop-filter: blur(20px);
+      border-bottom-color: var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo img { height: 36px; width: auto; opacity: 0.85; }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--cream-dim);
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--cream); }
+    @media (max-width: 720px) { .nav-links { display: none; } }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding-top: 120px; position: relative; overflow: hidden;
+    }
+    .hero-vline {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 1px; background: var(--line); pointer-events: none;
+    }
+    .hero-content { padding-bottom: 5rem; position: relative; z-index: 1; }
+    .hero-meta {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fup 1s var(--ease-out) 0.2s forwards;
+    }
+    .hero-meta-dash { width: 28px; height: 1px; background: var(--red); flex-shrink: 0; }
+    @keyframes fup {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-h1 {
+      font-family: var(--font-d);
+      font-size: clamp(4.5rem, 11vw, 13rem);
+      font-weight: 300; line-height: 0.92; letter-spacing: -0.03em;
+      color: var(--cream); margin-bottom: 3rem;
+      opacity: 0; animation: fup 1.2s var(--ease-out) 0.4s forwards;
+    }
+    .hero-h1 em { font-style: italic; color: var(--red); }
+    .hero-bottom-row {
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 3rem;
+      opacity: 0; animation: fup 1s var(--ease-out) 0.7s forwards;
+    }
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+      color: var(--cream-dim); max-width: 460px; line-height: 1.7;
+    }
+    @media (max-width: 700px) {
+      .hero-bottom-row { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      border-top: 1px solid var(--line); margin-top: 4rem;
+      opacity: 0; animation: fup 1s var(--ease-out) 1s forwards;
+    }
+    .stats-inner { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .stat {
+      padding: 2rem 2.5rem;
+      border-right: 1px solid var(--line);
+      display: flex; align-items: center; gap: 1.5rem;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-n {
+      font-family: var(--font-d); font-size: 3.2rem;
+      font-weight: 300; color: var(--cream);
+      line-height: 1; letter-spacing: -0.02em;
+    }
+    .stat-l {
+      font-size: 0.65rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--cream-dim); line-height: 1.4;
+    }
+    @media (max-width: 560px) {
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 1px solid var(--line); }
+      .stat:last-child { border-bottom: none; }
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding-block: 4rem; }
+
+    /* ─── PROBLEM ─── */
+    .prob-inner {
+      display: grid; grid-template-columns: 1fr 1.15fr;
+      gap: 6rem; align-items: start;
+    }
+    .prob-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(3.5rem, 8vw, 9rem);
+      font-weight: 300; line-height: 0.92; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1.5rem; margin-bottom: 2rem;
+    }
+    .prob-h2 em { font-style: italic; color: var(--red); }
+    .prob-body { font-size: 0.97rem; color: var(--cream-dim); line-height: 1.75; max-width: 360px; }
+    .tension-list { list-style: none; }
+    .tension-item {
+      display: flex; gap: 2rem; align-items: baseline;
+      padding: 1.65rem 0; border-bottom: 1px solid var(--line);
+    }
+    .tension-item:first-child { border-top: 1px solid var(--line); }
+    .tn { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.15em; color: var(--red); opacity: 0.55; flex-shrink: 0; width: 1.8rem; }
+    .tt {
+      font-family: var(--font-d); font-size: clamp(1.1rem, 1.9vw, 1.5rem);
+      font-weight: 300; color: var(--cream); line-height: 1.3;
+    }
+    .tt em { font-style: italic; color: var(--red); opacity: 0.85; }
+    .prob-bridge {
+      margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--line);
+      font-family: var(--font-d); font-size: 1.15rem; font-style: italic;
+      color: var(--cream-dim); line-height: 1.65;
+    }
+    .prob-bridge strong { font-style: normal; color: var(--cream); }
+    @media (max-width: 860px) { .prob-inner { grid-template-columns: 1fr; gap: 3.5rem; } }
+
+    /* ─── ABOUT ─── */
+    .about-top {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: end;
+      padding-bottom: 5rem; border-bottom: 1px solid var(--line); margin-bottom: 5rem;
+    }
+    .about-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 7vw, 8.5rem);
+      font-weight: 300; line-height: 0.92; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1.5rem;
+    }
+    .about-h2 em { font-style: italic; color: var(--red); }
+    .about-body { font-size: 0.97rem; color: var(--cream-dim); line-height: 1.8; }
+    .about-body p + p { margin-top: 1rem; }
+    .about-quote {
+      margin-top: 2rem; font-family: var(--font-d);
+      font-size: 1.15rem; font-style: italic;
+      color: var(--cream); line-height: 1.55;
+    }
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .pillar {
+      padding: 2.5rem 3rem 2.5rem 0;
+      border-right: 1px solid var(--line);
+    }
+    .pillar:first-child { padding-left: 0; }
+    .pillar:last-child { border-right: none; padding-right: 0; }
+    .pillar + .pillar { padding-left: 3rem; }
+    .p-num {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em;
+      color: var(--red); opacity: 0.6; text-transform: uppercase;
+      margin-bottom: 1.5rem; display: block;
+    }
+    .p-title {
+      font-family: var(--font-d); font-size: 1.75rem;
+      font-weight: 400; color: var(--cream); line-height: 1.15; margin-bottom: 0.9rem;
+    }
+    .p-desc { font-size: 0.87rem; color: var(--cream-dim); line-height: 1.7; }
+    @media (max-width: 860px) {
+      .about-top { grid-template-columns: 1fr; gap: 3rem; }
+      .pillars { grid-template-columns: 1fr; }
+      .pillar { border-right: none; padding: 2rem 0; border-bottom: 1px solid var(--line); }
+      .pillar:last-child { border-bottom: none; }
+      .pillar + .pillar { padding-left: 0; }
+    }
+
+    /* ─── WHO IT'S FOR ─── */
+    .for-headline-wrap { padding-bottom: 3rem; border-bottom: 1px solid var(--line); margin-bottom: 3rem; }
+    .for-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 6vw, 7.5rem);
+      font-weight: 300; line-height: 0.93; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1.5rem;
+    }
+    .for-h2 em { font-style: italic; color: var(--red); }
+    .for-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .for-col { padding: 3.5rem; border-right: 1px solid var(--line); }
+    .for-col:last-child { border-right: none; }
+    .for-col-lbl {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red);
+      display: block; margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem; border-bottom: 1px solid rgba(193,59,40,0.25);
+    }
+    .for-col-lbl-muted { color: var(--cream-dim); border-bottom-color: var(--line); }
+    .for-col-title {
+      font-family: var(--font-d); font-size: 1.55rem;
+      font-weight: 400; color: var(--cream); line-height: 1.2; margin-bottom: 2rem;
+    }
+    .for-col-title-muted { color: var(--cream-dim); }
+    .for-list { list-style: none; }
+    .for-list li {
+      display: flex; gap: 1.25rem; padding: 0.8rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.9rem; color: var(--cream-dim); line-height: 1.5;
+    }
+    .for-list li:last-child { border-bottom: none; }
+    .for-list li::before { content: '→'; color: var(--red); opacity: 0.55; font-size: 0.75rem; flex-shrink: 0; margin-top: 0.15em; }
+    .for-col-no .for-list li::before { content: '—'; }
+    @media (max-width: 720px) {
+      .for-grid { grid-template-columns: 1fr; }
+      .for-col { border-right: none; border-bottom: 1px solid var(--line); padding: 2.5rem 0; }
+      .for-col:last-child { border-bottom: none; }
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-head { padding-bottom: 3rem; border-bottom: 1px solid var(--line); margin-bottom: 4rem; }
+    .how-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 6vw, 7.5rem);
+      font-weight: 300; line-height: 0.93; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1.5rem; max-width: 680px;
+    }
+    .how-h2 em { font-style: italic; color: var(--red); }
+    .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .how-step {
+      padding: 0 3rem 0 0;
+      border-right: 1px solid var(--line);
+    }
+    .how-step:first-child { padding-left: 0; }
+    .how-step:last-child { border-right: none; padding-right: 0; }
+    .how-step + .how-step { padding-left: 3rem; }
+    .how-n { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; color: var(--cream-dim); text-transform: uppercase; display: block; margin-bottom: 1.5rem; }
+    .how-title { font-family: var(--font-d); font-size: 1.6rem; font-weight: 400; color: var(--cream); line-height: 1.15; margin-bottom: 0.85rem; }
+    .how-desc { font-size: 0.87rem; color: var(--cream-dim); line-height: 1.7; }
+    @media (max-width: 760px) {
+      .how-steps { grid-template-columns: 1fr; }
+      .how-step { border-right: none; padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
+      .how-step:last-child { border-bottom: none; }
+      .how-step + .how-step { padding-left: 0; }
+    }
+
+    /* ─── EXPERIENCES ─── */
+    .exp-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: end;
+      padding-bottom: 0; border-bottom: none; margin-bottom: 0;
+    }
+    .exp-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 6vw, 7.5rem);
+      font-weight: 300; line-height: 0.93; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1.5rem;
+    }
+    .exp-h2 em { font-style: italic; color: var(--red); }
+    .exp-intro { font-size: 0.97rem; color: var(--cream-dim); line-height: 1.75; }
+    .exp-item {
+      display: grid; grid-template-columns: 72px 1fr 52px;
+      gap: 2.5rem; align-items: center;
+      padding: 2.5rem 0; border-bottom: 1px solid var(--line);
+      transition: opacity 0.3s; cursor: default;
+    }
+    .exp-item:first-child { border-top: 1px solid var(--line); margin-top: 3rem; }
+    .exp-item:hover { opacity: 0.72; }
+    .exp-n {
+      font-family: var(--font-d); font-size: 4.5rem;
+      font-weight: 300; color: var(--cream); opacity: 0.08;
+      line-height: 1; letter-spacing: -0.04em; text-align: right;
+      transition: opacity 0.3s;
+    }
+    .exp-item:hover .exp-n { opacity: 0.2; }
+    .exp-tag {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--red); opacity: 0.7;
+      margin-bottom: 0.4rem; display: block;
+    }
+    .exp-title {
+      font-family: var(--font-d); font-size: clamp(1.3rem, 2.2vw, 2rem);
+      font-weight: 400; color: var(--cream); line-height: 1.1; margin-bottom: 0.5rem;
+    }
+    .exp-desc { font-size: 0.87rem; color: var(--cream-dim); line-height: 1.7; max-width: 520px; }
+    .exp-circ {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
+      transition: border-color 0.25s, background 0.25s, transform 0.4s var(--ease-spring);
+    }
+    .exp-circ svg { width: 15px; height: 15px; stroke: var(--cream-dim); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.25s; }
+    .exp-item:hover .exp-circ { border-color: var(--red); background: var(--red); transform: rotate(45deg); }
+    .exp-item:hover .exp-circ svg { stroke: var(--cream); }
+    @media (max-width: 800px) {
+      .exp-head { grid-template-columns: 1fr; gap: 2rem; }
+      .exp-item { grid-template-columns: 56px 1fr; }
+      .exp-circ { display: none; }
+    }
+
+    /* ─── INVESTMENT ─── */
+    .inv-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: end;
+      padding-bottom: 4rem; border-bottom: 1px solid var(--line); margin-bottom: 5rem;
+    }
+    .inv-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 6.5vw, 8rem);
+      font-weight: 300; line-height: 0.93; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1.5rem;
+    }
+    .inv-h2 em { font-style: italic; color: var(--red); }
+    .inv-body { font-size: 0.97rem; color: var(--cream-dim); line-height: 1.75; }
+    .inv-metrics { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .inv-metric {
+      padding: 0 3rem 0 0;
+      border-right: 1px solid var(--line);
+    }
+    .inv-metric:first-child { padding-left: 0; }
+    .inv-metric:last-child { border-right: none; padding-right: 0; }
+    .inv-metric + .inv-metric { padding-left: 3rem; }
+    .inv-val {
+      font-family: var(--font-d);
+      font-size: clamp(4rem, 7vw, 7.5rem);
+      font-weight: 300; color: var(--cream);
+      line-height: 1; letter-spacing: -0.03em; margin-bottom: 1rem;
+    }
+    .inv-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-dim); display: block; margin-bottom: 0.4rem; }
+    .inv-note { font-size: 0.83rem; color: rgba(245,239,227,0.35); line-height: 1.55; }
+    @media (max-width: 800px) {
+      .inv-head { grid-template-columns: 1fr; gap: 2rem; }
+      .inv-metrics { grid-template-columns: 1fr; }
+      .inv-metric { border-right: none; padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
+      .inv-metric:last-child { border-bottom: none; }
+      .inv-metric + .inv-metric { padding-left: 0; }
+    }
+
+    /* ─── PROCESS ─── */
+    .proc-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: end;
+      padding-bottom: 0; margin-bottom: 0;
+    }
+    .proc-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(3rem, 6vw, 7rem);
+      font-weight: 300; line-height: 0.93; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1.5rem;
+    }
+    .proc-h2 em { font-style: italic; color: var(--red); }
+    .proc-body { font-size: 0.97rem; color: var(--cream-dim); line-height: 1.75; }
+    .proc-step {
+      display: grid; grid-template-columns: 72px 1fr;
+      gap: 2.5rem; align-items: start;
+      padding: 2.75rem 0; border-bottom: 1px solid var(--line);
+    }
+    .proc-step:first-child { border-top: 1px solid var(--line); margin-top: 3rem; }
+    .proc-step:last-child { border-bottom: none; }
+    .proc-idx {
+      font-family: var(--font-d); font-size: 4rem;
+      font-weight: 300; color: var(--cream); opacity: 0.09;
+      line-height: 1; letter-spacing: -0.04em; text-align: right;
+    }
+    .proc-title { font-family: var(--font-d); font-size: 1.55rem; font-weight: 400; color: var(--cream); line-height: 1.2; margin-bottom: 0.4rem; margin-top: 0.3rem; }
+    .proc-desc { font-size: 0.87rem; color: var(--cream-dim); line-height: 1.7; }
+    @media (max-width: 800px) { .proc-head { grid-template-columns: 1fr; gap: 2rem; } }
+
+    /* ─── DIFFERENTIATORS ─── */
+    .diff-head { padding-bottom: 3rem; border-bottom: 1px solid var(--line); margin-bottom: 0; }
+    .diff-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(2.8rem, 5.5vw, 7rem);
+      font-weight: 300; line-height: 0.93; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1.5rem; max-width: 800px;
+    }
+    .diff-h2 em { font-style: italic; color: var(--red); }
+    .diff-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+    }
+    .diff-item {
+      padding: 3rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      transition: background 0.3s;
+    }
+    .diff-item:hover { background: var(--cream-faint); }
+    .diff-idx { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; color: var(--cream-dim); margin-bottom: 1.5rem; display: block; }
+    .diff-title { font-family: var(--font-d); font-size: 1.55rem; font-weight: 400; color: var(--cream); line-height: 1.2; margin-bottom: 0.75rem; }
+    .diff-desc { font-size: 0.87rem; color: var(--cream-dim); line-height: 1.7; }
+    @media (max-width: 640px) {
+      .diff-grid { grid-template-columns: 1fr; border-left: none; }
+      .diff-item { border-left: 1px solid var(--line); }
+    }
+
+    /* ─── DIRECTOR ─── */
+    .dir-inner { display: grid; grid-template-columns: 360px 1fr; gap: 7rem; align-items: center; }
+    .dir-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+    .dir-name {
+      font-family: var(--font-d);
+      font-size: clamp(2.8rem, 4.5vw, 5.5rem);
+      font-weight: 300; color: var(--cream);
+      line-height: 0.95; letter-spacing: -0.02em;
+      margin-top: 1rem; margin-bottom: 0.5rem;
+    }
+    .dir-role {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); opacity: 0.7;
+      display: block; margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem; border-bottom: 1px solid var(--line);
+    }
+    .dir-bio { font-size: 0.97rem; color: var(--cream-dim); line-height: 1.8; margin-bottom: 2.5rem; }
+    @media (max-width: 860px) {
+      .dir-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .dir-photo { max-width: 300px; }
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .test-head {
+      padding-bottom: 4rem; border-bottom: 1px solid var(--line); margin-bottom: 0;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .test-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(2.8rem, 5vw, 6.5rem);
+      font-weight: 300; line-height: 0.93; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1rem; max-width: 680px;
+    }
+    .test-h2 em { font-style: italic; color: var(--red); }
+    .test-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .test-card {
+      padding: 3.5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      display: flex; flex-direction: column; justify-content: space-between; gap: 2rem;
+    }
+    .test-card:nth-child(2) { border-right: none; }
+    .test-q {
+      font-family: var(--font-d); font-size: clamp(1.15rem, 2vw, 1.65rem);
+      font-weight: 300; font-style: italic; color: var(--cream); line-height: 1.6; flex: 1;
+    }
+    .test-attr { display: flex; align-items: center; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+    .test-av {
+      width: 38px; height: 38px; border-radius: 50%;
+      border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-d); font-size: 0.95rem; color: var(--red); flex-shrink: 0;
+    }
+    .test-name { font-size: 0.85rem; font-weight: 500; color: var(--cream); display: block; }
+    .test-role { font-size: 0.75rem; color: var(--cream-dim); display: block; }
+    @media (max-width: 720px) {
+      .test-head { flex-direction: column; align-items: flex-start; }
+      .test-grid { grid-template-columns: 1fr; }
+      .test-card:nth-child(2) { border-right: none; border-left: none; border-top: none; }
+    }
+
+    /* ─── FAQ ─── */
+    .faq-inner { display: grid; grid-template-columns: 320px 1fr; gap: 7rem; align-items: start; }
+    .faq-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(2.5rem, 4.5vw, 5.5rem);
+      font-weight: 300; line-height: 0.93; letter-spacing: -0.03em;
+      color: var(--cream); margin-top: 1rem; margin-bottom: 1.5rem;
+    }
+    .faq-h2 em { font-style: italic; color: var(--red); }
+    .faq-note { font-size: 0.9rem; color: var(--cream-dim); line-height: 1.7; }
+    .faq-note a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+    details.faq-item { border-bottom: 1px solid var(--line); }
+    details.faq-item:first-child { border-top: 1px solid var(--line); }
+    summary.faq-q {
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 1.65rem 0; cursor: pointer; list-style: none;
+      font-family: var(--font-d); font-size: 1.2rem; font-weight: 400;
+      color: var(--cream); line-height: 1.3; transition: color 0.25s;
+    }
+    summary.faq-q:hover { color: var(--cream-dim); }
+    summary::-webkit-details-marker { display: none; }
+    .faq-icon {
+      width: 26px; height: 26px; border-radius: 50%;
+      border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: border-color 0.25s;
+    }
+    .faq-icon svg { width: 11px; height: 11px; stroke: var(--cream-dim); fill: none; stroke-width: 2; stroke-linecap: round; transition: transform 0.4s var(--ease-out), stroke 0.25s; }
+    details[open] .faq-icon { border-color: var(--red); }
+    details[open] .faq-icon svg { transform: rotate(45deg); stroke: var(--red); }
+    .faq-ans { padding-bottom: 1.65rem; font-size: 0.9rem; color: var(--cream-dim); line-height: 1.75; max-width: 600px; }
+    @media (max-width: 800px) { .faq-inner { grid-template-columns: 1fr; gap: 3rem; } }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      padding-block: 10rem; text-align: center;
+      border-top: 1px solid var(--line); position: relative; overflow: hidden;
+    }
+    .cta-h2 {
+      font-family: var(--font-d);
+      font-size: clamp(5rem, 13vw, 16rem);
+      font-weight: 300; line-height: 0.92; letter-spacing: -0.03em;
+      color: var(--cream); margin-bottom: 3rem;
+    }
+    .cta-h2 em { font-style: italic; color: var(--red); }
+    .cta-sub { font-size: 1rem; color: var(--cream-dim); max-width: 400px; margin-inline: auto; line-height: 1.7; margin-bottom: 3rem; }
+    .deadline-badge {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--cream-dim); border: 1px solid var(--line); border-radius: 100px;
+      padding: 0.5rem 1.2rem; margin-bottom: 3rem;
+    }
+    .deadline-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--red);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.4); }
+    }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .int-divider {
+      display: flex; align-items: center; gap: 1.5rem;
+      max-width: 300px; margin: 0 auto 2rem;
+      color: var(--cream-dim); font-size: 0.75rem; letter-spacing: 0.1em;
+    }
+    .int-divider::before, .int-divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .int-form { display: flex; gap: 1rem; justify-content: center; max-width: 420px; margin-inline: auto; }
+    .int-input {
+      flex: 1; background: transparent; border: none;
+      border-bottom: 1px solid rgba(245,239,227,0.22);
+      color: var(--cream); font-family: var(--font-b); font-size: 0.87rem;
+      padding: 0.6rem 0; outline: none; transition: border-color 0.3s;
+    }
+    .int-input::placeholder { color: rgba(245,239,227,0.28); }
+    .int-input:focus { border-bottom-color: var(--cream); }
+    @media (max-width: 560px) { .cta-section { padding-block: 6rem; } }
+
+    /* ─── FOOTER ─── */
+    footer { padding: 2.25rem 0; border-top: 1px solid var(--line); }
+    .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .foot-logo img { height: 30px; width: auto; opacity: 0.55; }
+    .foot-text { font-size: 0.7rem; letter-spacing: 0.06em; color: rgba(245,239,227,0.28); }
+    .foot-link { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); transition: color 0.25s; }
+    .foot-link:hover { color: var(--cream); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo"><img src="brand_assets/Renewal logo.jpg" alt="Renewal Residency" /></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#how">Structure</a></li>
+        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="https://docs.google.com/forms/d/1p0MLWUzDwsnzmNFL1jYBDLTom0FYOu9bl2Ms2HtKIt0/edit" target="_blank" class="btn"><span>Apply</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-vline"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-meta">
+        <div class="hero-meta-dash"></div>
+        <span class="lbl">Summit Church · Raleigh-Durham, NC &nbsp;·&nbsp; Applications close May 31</span>
+      </div>
+      <h1 class="hero-h1">Your work is<br /><em>your calling.</em></h1>
+      <div class="hero-bottom-row">
+        <p class="hero-sub">A two-year residency that equips early-career professionals to integrate faith, career, and God's global mission — without choosing between them.</p>
+        <a href="https://docs.google.com/forms/d/1p0MLWUzDwsnzmNFL1jYBDLTom0FYOu9bl2Ms2HtKIt0/edit" target="_blank" class="btn btn-red btn-lg"><span>Apply to the Residency</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat"><span class="stat-n">2</span><span class="stat-l">Year<br />Program</span></div>
+        <div class="stat"><span class="stat-n">5–10</span><span class="stat-l">Hrs / Week<br />Commitment</span></div>
+        <div class="stat"><span class="stat-n">∞</span><span class="stat-l">Kingdom<br />Impact</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="prob-inner">
+      <div>
+        <span class="lbl lbl-red reveal">Sound Familiar?</span>
+        <h2 class="prob-h2 reveal d1">You feel<br />the <em>tension.</em></h2>
+        <p class="prob-body reveal d2">You're ambitious, faith-filled, and early in your career. But somewhere between Sunday and Monday morning, something gets lost. You're not alone — and it doesn't have to stay that way.</p>
+      </div>
+      <div>
+        <ul class="tension-list">
+          <li class="tension-item reveal">
+            <span class="tn">01</span>
+            <p class="tt">Your faith and your work feel like <em>two separate lives</em> you're trying to keep balanced.</p>
+          </li>
+          <li class="tension-item reveal d1">
+            <span class="tn">02</span>
+            <p class="tt">You want to pursue excellence in your career <em>and</em> something beyond it — but nobody's showing you how.</p>
+          </li>
+          <li class="tension-item reveal d2">
+            <span class="tn">03</span>
+            <p class="tt">You're surrounded by peers, but feel like <em>nobody around you is asking the same questions.</em></p>
+          </li>
+          <li class="tension-item reveal d3">
+            <span class="tn">04</span>
+            <p class="tt">You sense God has a purpose for your work — but <em>clarity feels just out of reach.</em></p>
+          </li>
+        </ul>
+        <p class="prob-bridge reveal d4">Renewal Residency exists because <strong>the tension you're feeling is real</strong> — and it deserves more than a sermon series or a career coach. It deserves a community, a guide, and a two-year journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="about-top">
+      <div>
+        <span class="lbl lbl-red reveal">What is Renewal Residency?</span>
+        <h2 class="about-h2 reveal d1">Where <em>mission</em><br />meets the<br />marketplace.</h2>
+      </div>
+      <div class="reveal d2">
+        <div class="about-body">
+          <p>Renewal Residency is a program of Summit Church in Raleigh-Durham, NC. We're combining the best of talent development and global mobility from the corporate world with best-in-class ministry and missions leadership development — forming a 2-year residency unlike anything else.</p>
+          <p>Graduates leave equipped to live out their calling in the marketplace and help bring about kingdom restoration in the world through their daily work.</p>
+        </div>
+        <p class="about-quote">"If you believe God has more for your work than it just being a means to an end — this is for you."</p>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <span class="p-num">01 — Mentorship</span>
+        <h3 class="p-title">Your guide in<br />your industry.</h3>
+        <p class="p-desc">One-on-one pairing with someone from your specific career field who walks alongside your professional and spiritual growth.</p>
+      </div>
+      <div class="pillar reveal d1">
+        <span class="p-num">02 — Community</span>
+        <h3 class="p-title">A cohort who<br />shares your convictions.</h3>
+        <p class="p-desc">Monthly forums with industry speakers, curated content, and deep peer conversations that push you to grow.</p>
+      </div>
+      <div class="pillar reveal d2">
+        <span class="p-num">03 — Global Vision</span>
+        <h3 class="p-title">Local roots,<br />global reach.</h3>
+        <p class="p-desc">Vision trips to church plants locally and internationally — see kingdom work in action and understand your part in it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section id="for">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="for-headline-wrap">
+      <span class="lbl lbl-red reveal">Is This For You?</span>
+      <h2 class="for-h2 reveal d1">Built for those<br />who <em>refuse to settle.</em></h2>
+    </div>
+    <div class="for-grid">
+      <div class="for-col reveal">
+        <span class="for-col-lbl">This IS for you if...</span>
+        <h3 class="for-col-title">You believe your work is part of something greater.</h3>
+        <ul class="for-list">
+          <li>You don't want to separate faith from your career</li>
+          <li>You're hungry to grow — spiritually, personally, professionally</li>
+          <li>You want clarity, direction, and mentorship</li>
+          <li>You're in business, healthcare, education, or beyond</li>
+          <li>You want to pursue excellence and contribute to human flourishing</li>
+          <li>You want to play a meaningful role in church planting</li>
+        </ul>
+      </div>
+      <div class="for-col for-col-no reveal d1">
+        <span class="for-col-lbl for-col-lbl-muted">This is NOT for you if...</span>
+        <h3 class="for-col-title for-col-title-muted">You see work as simply a paycheck and nothing more.</h3>
+        <ul class="for-list">
+          <li>You view your job purely as a means to an end</li>
+          <li>You aren't ready to commit to intentional growth</li>
+          <li>You're looking for a low-engagement program</li>
+          <li>You don't believe your work has purpose in God's story</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="how-head">
+      <span class="lbl lbl-red reveal">Program Structure</span>
+      <h2 class="how-h2 reveal d1">What does a<br /><em>month look like?</em></h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <span class="how-n">01</span>
+        <h3 class="how-title">Monthly Cohort Forum</h3>
+        <p class="how-desc">The whole cohort gathers together. Hear from different industry speakers and discuss curated content from books, articles, and podcasts explored in your own time.</p>
+      </div>
+      <div class="how-step reveal d1">
+        <span class="how-n">02</span>
+        <h3 class="how-title">Peer Small Groups</h3>
+        <p class="how-desc">Gather with 1–2 other residents twice a month outside the forum to discuss content and wrestle with how it applies to your specific work and context.</p>
+      </div>
+      <div class="how-step reveal d2">
+        <span class="how-n">03</span>
+        <h3 class="how-title">Leadership Development Guide</h3>
+        <p class="how-desc">Meet monthly with your personal guide — someone in your career industry matched specifically to you. They walk alongside you and invest in your growth directly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="exp-head">
+      <div>
+        <span class="lbl lbl-red reveal">What You'll Experience</span>
+        <h2 class="exp-h2 reveal d1">Beyond the<br /><em>monthly rhythm.</em></h2>
+      </div>
+      <p class="exp-intro reveal d2">In addition to the monthly structure, Renewal Residency includes curated experiences throughout the two years — each one designed to expand your vision, deepen your network, and ground your calling in something tangible.</p>
+    </div>
+    <div>
+      <div class="exp-item reveal">
+        <div class="exp-n">01</div>
+        <div>
+          <span class="exp-tag">Annual Event</span>
+          <h3 class="exp-title">Faith & Work Conference</h3>
+          <p class="exp-desc">A curated gathering at the intersection of faith and professional life. Hear from practitioners, leaders, and thinkers who are living out the integration you're pursuing.</p>
+        </div>
+        <div class="exp-circ"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </div>
+      <div class="exp-item reveal d1">
+        <div class="exp-n">02</div>
+        <div>
+          <span class="exp-tag">Global Immersion</span>
+          <h3 class="exp-title">International Networking & Vision Trip</h3>
+          <p class="exp-desc">Travel with your cohort to meet global leaders, experience church planting on the ground, and see how the marketplace and mission intersect beyond American borders.</p>
+        </div>
+        <div class="exp-circ"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </div>
+      <div class="exp-item reveal d2">
+        <div class="exp-n">03</div>
+        <div>
+          <span class="exp-tag">Domestic Immersion</span>
+          <h3 class="exp-title">Domestic Church Planting & Networking Trip</h3>
+          <p class="exp-desc">Visit a church plant in another U.S. city, meet the team, and see how professionals are embedding themselves in new communities for the sake of the gospel.</p>
+        </div>
+        <div class="exp-circ"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </div>
+      <div class="exp-item reveal d3">
+        <div class="exp-n">04</div>
+        <div>
+          <span class="exp-tag">Marketplace Access</span>
+          <h3 class="exp-title">Visit Local Business Headquarters</h3>
+          <p class="exp-desc">Get behind the scenes at leading companies in the Raleigh-Durham area. Meet executives who integrate their faith in the workplace and gain access to networks unavailable anywhere else.</p>
+        </div>
+        <div class="exp-circ"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </div>
+      <div class="exp-item reveal d4">
+        <div class="exp-n">05</div>
+        <div>
+          <span class="exp-tag">Personal Growth</span>
+          <h3 class="exp-title">Personalized Development Plan</h3>
+          <p class="exp-desc">Work alongside your guide to build a development plan tailored to where you are and where you're going — covering career trajectory, spiritual formation, and leadership growth.</p>
+        </div>
+        <div class="exp-circ"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section id="investment">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="inv-head">
+      <div>
+        <span class="lbl lbl-red reveal">The Commitment</span>
+        <h2 class="inv-h2 reveal d1">An <em>investment</em><br />in your calling.</h2>
+      </div>
+      <p class="inv-body reveal d2">Growth is never without cost. Renewal Residency asks you to show up — financially, and with your time. What you receive in return is mentorship, community, clarity, and a foundation that shapes the arc of your career and your faith.</p>
+    </div>
+    <div class="inv-metrics">
+      <div class="inv-metric reveal">
+        <div class="inv-val">$5k</div>
+        <span class="inv-lbl">Program Investment</span>
+        <p class="inv-note">Annual program fee covering mentorship, cohort events, and vision trips.</p>
+      </div>
+      <div class="inv-metric reveal d1">
+        <div class="inv-val">5–10</div>
+        <span class="inv-lbl">Hours Per Week</span>
+        <p class="inv-note">Time commitment for forums, peer groups, and guide meetings each month.</p>
+      </div>
+      <div class="inv-metric reveal d2">
+        <div class="inv-val">2</div>
+        <span class="inv-lbl">Year Program</span>
+        <p class="inv-note">A full two-year journey of intentional formation alongside a cohort.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="proc-head">
+      <div>
+        <span class="lbl lbl-red reveal">Application Process</span>
+        <h2 class="proc-h2 reveal d1">What happens<br />after you <em>apply?</em></h2>
+      </div>
+      <p class="proc-body reveal d2">The process is simple and relational. We want to make sure Renewal Residency is the right fit for you — and that you're the right fit for us.</p>
+    </div>
+    <div>
+      <div class="proc-step reveal">
+        <div class="proc-idx">1</div>
+        <div>
+          <h3 class="proc-title">Submit Your Application</h3>
+          <p class="proc-desc">Fill out the interest form with your background, current role, and what draws you to the program.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal d1">
+        <div class="proc-idx">2</div>
+        <div>
+          <h3 class="proc-title">Interest Meeting</h3>
+          <p class="proc-desc">We'll send you a Zoom link to an upcoming interest meeting where you can ask questions and learn more before committing.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal d2">
+        <div class="proc-idx">3</div>
+        <div>
+          <h3 class="proc-title">30-Minute Interview</h3>
+          <p class="proc-desc">A brief conversation to ensure the residency would be a mutually beneficial experience for both of us.</p>
+        </div>
+      </div>
+      <div class="proc-step reveal d3">
+        <div class="proc-idx">4</div>
+        <div>
+          <h3 class="proc-title">Welcome to the Cohort</h3>
+          <p class="proc-desc">You're in. Your two-year journey begins with a community that will shape your work, faith, and calling.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section>
+  <div class="container">
+    <div class="sline"></div>
+    <div class="diff-head">
+      <span class="lbl lbl-red reveal">What Sets Us Apart</span>
+      <h2 class="diff-h2 reveal d1">Not just another<br /><em>leadership program.</em></h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-item reveal">
+        <span class="diff-idx">01</span>
+        <h3 class="diff-title">Church-Rooted Formation</h3>
+        <p class="diff-desc">Renewal Residency is a program of Summit Church in Raleigh-Durham — your formation is embedded in a living community, not isolated to a curriculum.</p>
+      </div>
+      <div class="diff-item reveal d1">
+        <span class="diff-idx">02</span>
+        <h3 class="diff-title">Church Planting at the Core</h3>
+        <p class="diff-desc">The underlying heartbeat of this program is church planting — local and global. Your marketplace work is connected to something bigger than your industry.</p>
+      </div>
+      <div class="diff-item reveal d2">
+        <span class="diff-idx">03</span>
+        <h3 class="diff-title">Corporate Meets Ministry</h3>
+        <p class="diff-desc">We've borrowed the best of corporate talent development and global mobility programs and combined them with world-class ministry leadership training.</p>
+      </div>
+      <div class="diff-item reveal d3">
+        <span class="diff-idx">04</span>
+        <h3 class="diff-title">Industry-Matched Mentorship</h3>
+        <p class="diff-desc">Your leadership guide isn't generic — they're selected from your specific career field, giving you mentorship that's actually applicable to your daily work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTOR -->
+<section id="director">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="dir-inner">
+      <div class="reveal">
+        <img class="dir-photo" src="https://placehold.co/380x507/0d0906/c13b28" alt="Julie Scrudato" />
+      </div>
+      <div>
+        <span class="lbl lbl-red reveal">Program Director</span>
+        <h2 class="dir-name reveal d1">Julie Scrudato</h2>
+        <span class="dir-role reveal d2">Director, Renewal Residency · Summit Church</span>
+        <p class="dir-bio reveal d3">Julie Scrudato is the founding director of Renewal Residency, bringing years of experience in leadership development and marketplace ministry to the program. She is passionate about equipping the next generation of professionals to integrate their faith with their daily work in meaningful, lasting ways. Julie is based in Raleigh-Durham and is deeply rooted in the Summit Church community.</p>
+        <div class="reveal d4">
+          <a href="mailto:jscrudato@summitchurch.com" class="btn"><span>Contact Julie with Questions</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="test-head">
+      <div>
+        <span class="lbl lbl-red reveal">Heard From the Community</span>
+        <h2 class="test-h2 reveal d1">Words from those<br />who've <em>been there.</em></h2>
+      </div>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <p class="test-q">"Renewal Residency gave me language for something I'd always felt but couldn't name. I went from seeing my job as a distraction from 'real ministry' to understanding it as the very place God had called me. I'm a better professional, a better leader, and honestly, a better person because of this program."</p>
+        <div class="test-attr">
+          <div class="test-av">A</div>
+          <div><span class="test-name">Alex M.</span><span class="test-role">Software Engineer · Cohort Participant</span></div>
+        </div>
+      </div>
+      <div class="test-card reveal d1">
+        <p class="test-q">"I'd read the books and listened to the podcasts, but nothing compared to having a guide in my corner who actually works in healthcare like I do. The conversations were unlike anything I'd experienced in a church setting — practical, honest, and deeply rooted in faith."</p>
+        <div class="test-attr">
+          <div class="test-av">S</div>
+          <div><span class="test-name">Sarah K.</span><span class="test-role">Healthcare Professional · Cohort Participant</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="sline"></div>
+    <div class="faq-inner">
+      <div>
+        <span class="lbl lbl-red reveal">Common Questions</span>
+        <h2 class="faq-h2 reveal d1">Still have<br /><em>questions?</em></h2>
+        <p class="faq-note reveal d2">If you don't see your question here, reach out to Julie directly at <a href="mailto:jscrudato@summitchurch.com">jscrudato@summitchurch.com</a>.</p>
+      </div>
+      <div class="reveal d1">
+        <details class="faq-item" open>
+          <summary class="faq-q">Is this only for people at Summit Church?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p class="faq-ans">No — Renewal Residency is open to anyone in the Raleigh-Durham area who shares our values around faith, work, and mission. You don't need to be a member of Summit Church to apply.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How much does it cost?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p class="faq-ans">The program fee is $5,000 per year for a two-year commitment. This covers your guide relationship, cohort forums, curated experiences, and vision trips. If cost is a barrier, reach out — we want to have that conversation.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">Can I do this while working full-time?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p class="faq-ans">Yes — the program is designed for working professionals. The monthly commitment is 5–10 hours and all core activities are scheduled with full-time work in mind. The international and domestic trips will require some PTO.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What industries is this designed for?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p class="faq-ans">All of them. We've had residents from business, healthcare, education, tech, law, finance, and more. Your guide will be matched from your specific industry, so the mentorship is always relevant to your context.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">When does the next cohort begin?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p class="faq-ans">The next cohort begins in Fall 2026. Applications close May 31, 2026. After submitting your application, you'll be invited to an interest meeting and a brief interview before a final decision is made.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">How many people are in a cohort?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p class="faq-ans">Cohorts are kept intentionally small to maintain a high-quality experience and genuine community. We limit enrollment to ensure every resident gets meaningful attention from their guide and real relationships within the cohort.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-q">What happens after the two years?<span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p class="faq-ans">You become part of the Renewal alumni network — a growing community of professionals who share your conviction that work and faith belong together. We're building something that lasts well beyond the program itself.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="apply">
+  <div class="container">
+    <div class="reveal"><span class="deadline-badge"><span class="deadline-dot"></span>Applications close May 31, 2026</span></div>
+    <h2 class="cta-h2 reveal d1">God has <em>more</em><br />for your work.</h2>
+    <p class="cta-sub reveal d2">The next cohort begins Fall 2026. Spots are limited — take the first step now and we'll invite you to an upcoming interest meeting.</p>
+    <div class="cta-btns reveal d3">
+      <a href="https://docs.google.com/forms/d/1p0MLWUzDwsnzmNFL1jYBDLTom0FYOu9bl2Ms2HtKIt0/edit" target="_blank" class="btn btn-red btn-lg"><span>Apply to the Residency</span></a>
+      <a href="mailto:jscrudato@summitchurch.com" class="btn btn-lg"><span>Ask a Question</span></a>
+    </div>
+    <div class="int-divider reveal d4"><span>or</span></div>
+    <div class="int-form reveal d4">
+      <input type="email" class="int-input" placeholder="Your email address" />
+      <a href="mailto:jscrudato@summitchurch.com?subject=Interest List — Renewal Residency" class="btn"><span>Join Interest List</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container foot-inner">
+    <div class="foot-logo"><img src="brand_assets/Renewal logo.jpg" alt="Renewal Residency" /></div>
+    <p class="foot-text">© 2026 Renewal Residency · A ministry of Summit Church, Raleigh-Durham, NC</p>
+    <a href="https://docs.google.com/forms/d/1p0MLWUzDwsnzmNFL1jYBDLTom0FYOu9bl2Ms2HtKIt0/edit" target="_blank" class="foot-link">Apply Now →</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
