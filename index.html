@@ -119,9 +119,19 @@
       align-items: center;
       justify-content: space-between;
     }
+    .nav-logo {
+      overflow: hidden;
+      width: 160px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+    }
     .nav-logo img {
-      height: 44px;
-      width: auto;
+      width: 250px;
+      height: auto;
+      margin-left: -18px;
+      margin-top: -22px;
+      flex-shrink: 0;
     }
     .nav-links {
       display: flex;
@@ -204,9 +214,9 @@
       min-height: 100svh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       padding-top: 100px;
-      padding-bottom: var(--gap-xl);
+      padding-bottom: 0;
       position: relative;
       overflow: hidden;
     }
@@ -248,7 +258,7 @@
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 820px;
+      padding-bottom: var(--gap-lg);
     }
     .hero-globe {
       position: absolute;
@@ -287,10 +297,12 @@
       background: var(--red);
     }
     .hero-headline {
-      font-size: clamp(3.2rem, 8vw, 7.5rem);
+      font-size: clamp(4.5rem, 11vw, 11rem);
       font-weight: 300;
       color: var(--ink);
-      margin-bottom: 0.15em;
+      margin-bottom: 0.1em;
+      line-height: 0.92;
+      letter-spacing: -0.03em;
     }
     .hero-headline em {
       font-style: italic;
@@ -298,12 +310,13 @@
     }
     .hero-sub {
       font-family: var(--font-display);
-      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
       font-weight: 300;
       color: var(--ink-soft);
-      max-width: 580px;
+      max-width: 520px;
       line-height: 1.5;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
+      margin-top: 1.5rem;
     }
     .hero-actions {
       display: flex;
@@ -333,10 +346,7 @@
       50% { opacity: 0.75; transform: translateY(5px); }
     }
     .hero-stat-strip {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      position: relative;
       border-top: 1px solid rgba(193,59,40,0.15);
       background: rgba(237, 229, 213, 0.5);
       backdrop-filter: blur(4px);
@@ -414,7 +424,7 @@
       display: flex;
       align-items: flex-start;
       gap: 1.25rem;
-      padding-block: 1.75rem;
+      padding-block: 2.5rem;
       border-bottom: 1px solid rgba(193,59,40,0.1);
     }
     .problem-tension:first-child { border-top: 1px solid rgba(193,59,40,0.1); }
@@ -632,6 +642,7 @@
     ════════════════════════════════════════════════════════ */
     .for-section {
       padding-block: var(--gap-xl);
+      background: linear-gradient(to bottom, var(--cream) 70%, var(--cream-dark) 100%);
     }
     .for-header {
       text-align: center;
@@ -1602,7 +1613,7 @@
       display: block;
       filter: grayscale(15%);
     }
-    /* Red accent corner */
+    /* Red accent corners */
     .director-photo-wrap::before {
       content: '';
       position: absolute;
@@ -1717,7 +1728,7 @@
 <nav id="nav">
   <div class="container nav-inner">
     <a href="#" class="nav-logo">
-      <img src="brand_assets/Renewal logo.jpg" alt="Renewal Residency" />
+      <img src="brand_assets/Renewal Residnecy Logo.png" alt="Renewal Residency" />
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -1810,10 +1821,6 @@
       <p class="hero-sub reveal reveal-delay-2">
         A two-year residency that equips early-career professionals to integrate faith, career, and God's global mission — without choosing between them.
       </p>
-      <div class="hero-actions reveal reveal-delay-3">
-        <a href="https://docs.google.com/forms/d/1p0MLWUzDwsnzmNFL1jYBDLTom0FYOu9bl2Ms2HtKIt0/edit" target="_blank" class="btn btn-primary">Apply to the Residency</a>
-        <a href="#about" class="btn btn-outline">Learn More</a>
-      </div>
     </div>
   </div>
   <div class="hero-stat-strip">
@@ -1828,7 +1835,15 @@
           <span class="hero-stat-label">Hrs / Week Commitment</span>
         </div>
         <div class="hero-stat reveal reveal-delay-2">
-          <span class="hero-stat-num">∞</span>
+          <span class="hero-stat-num">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="width:2.4rem;height:2.4rem;color:var(--red);">
+              <circle cx="16" cy="16" r="13"/>
+              <ellipse cx="16" cy="16" rx="6" ry="13"/>
+              <line x1="3" y1="16" x2="29" y2="16"/>
+              <path d="M5 9.5 Q16 13 27 9.5"/>
+              <path d="M5 22.5 Q16 19 27 22.5"/>
+            </svg>
+          </span>
           <span class="hero-stat-label">Kingdom Impact</span>
         </div>
       </div>
@@ -1860,19 +1875,15 @@
           </div>
           <div class="problem-tension reveal reveal-delay-1">
             <div class="problem-tension-mark"></div>
-            <p class="problem-tension-text">You want to pursue excellence in your career <em>and</em> something beyond it — but nobody's showing you how.</p>
+            <p class="problem-tension-text">You want to pursue excellence in your career and do something that <em>matters eternally</em> — but you feel like you have to choose.</p>
           </div>
           <div class="problem-tension reveal reveal-delay-2">
             <div class="problem-tension-mark"></div>
-            <p class="problem-tension-text">You're surrounded by peers, but feel like <em>nobody around you is asking the same questions.</em></p>
-          </div>
-          <div class="problem-tension reveal reveal-delay-3">
-            <div class="problem-tension-mark"></div>
-            <p class="problem-tension-text">You sense God has a purpose for your work — but <em>clarity feels just out of reach.</em></p>
+            <p class="problem-tension-text">You sense God has a purpose for your work — but how do you not settle for your job being <em>just a means to provide?</em></p>
           </div>
         </div>
-        <div class="problem-bridge reveal reveal-delay-4">
-          Renewal Residency exists because <strong>the tension you're feeling is real</strong> — and it deserves more than a sermon series or a career coach. It deserves a community, a guide, and a two-year journey.
+        <div class="problem-bridge reveal reveal-delay-3">
+          Renewal Residency exists because <strong>the tension you're feeling is real</strong> — and we believe God is using your unique skills in the workplace to bring His kingdom to earth. We exist to help you live that out.
         </div>
       </div>
     </div>
@@ -1887,21 +1898,21 @@
     <!-- Top: headline left, body right -->
     <div class="about-top">
       <div>
-        <span class="eyebrow reveal" style="color:var(--red-light); margin-bottom:1.5rem; display:block;">What is Renewal Residency?</span>
+        <span class="eyebrow reveal" style="color:var(--red-light); margin-bottom:1.5rem; display:block;">What is the Renewal Residency?</span>
         <h2 class="display-serif about-headline reveal reveal-delay-1">
-          Where <em>mission</em><br />meets the<br />marketplace.
+          Where <em>kingdom mission</em><br />meets the<br />marketplace.
         </h2>
       </div>
       <div class="about-top-right reveal reveal-delay-2">
         <div class="about-body">
           <p>
-            Renewal Residency is a program of Summit Church in Raleigh-Durham, NC. We're combining the best of talent development and global mobility from the corporate world with best-in-class ministry and missions leadership development — forming a 2-year residency unlike anything else.
+            The Renewal Residency is a program of Summit Church in Raleigh-Durham, NC. We're combining the best of <strong style="color:var(--cream); font-weight:500;">talent development and global mobility</strong> from the corporate world with <strong style="color:var(--cream); font-weight:500;">best-in-class ministry and missions leadership development</strong> — forming a 2-year residency unlike anything else.
           </p>
           <p>
             Graduates leave equipped to live out their calling in the marketplace and help bring about kingdom restoration in the world through their daily work.
           </p>
-          <p style="margin-top:1.5rem; font-size:1.1rem; color:var(--cream); font-style:italic; font-family:var(--font-display); line-height:1.5;">
-            "If you believe God has more for your work than it just being a means to an end — this is for you."
+          <p style="margin-top:1.5rem; font-size:1.1rem; color:var(--cream); font-family:var(--font-display); line-height:1.5;">
+            If you believe God has more for your work than it just being a means to an end — this is for you.
           </p>
         </div>
       </div>
@@ -1911,21 +1922,21 @@
     <div class="about-pillars">
       <div class="about-pillar reveal" data-num="1">
         <div class="about-pillar-icon">
-          <!-- Person/mentor icon -->
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 20v-1a7 7 0 0114 0v1"/></svg>
-        </div>
-        <span class="about-pillar-num">01 — Mentorship</span>
-        <div class="about-pillar-title">Your guide in<br />your industry.</div>
-        <p class="about-pillar-desc">One-on-one pairing with someone from your specific career field who walks alongside your professional and spiritual growth.</p>
-      </div>
-      <div class="about-pillar reveal reveal-delay-1" data-num="2">
-        <div class="about-pillar-icon">
           <!-- Community icon -->
           <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="2.5"/><circle cx="15" cy="7" r="2.5"/><path d="M2 20v-1a5 5 0 015-5h10a5 5 0 015 5v1"/></svg>
         </div>
-        <span class="about-pillar-num">02 — Community</span>
+        <span class="about-pillar-num">01 — Community</span>
         <div class="about-pillar-title">A cohort who<br />shares your convictions.</div>
-        <p class="about-pillar-desc">Monthly forums with industry speakers, curated content, and deep peer conversations that push you to grow.</p>
+        <p class="about-pillar-desc">Monthly forums with a diverse group of speakers across a variety of industries, curated content, and deep peer conversations to help you grow.</p>
+      </div>
+      <div class="about-pillar reveal reveal-delay-1" data-num="2">
+        <div class="about-pillar-icon">
+          <!-- Person/mentor icon -->
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 20v-1a7 7 0 0114 0v1"/></svg>
+        </div>
+        <span class="about-pillar-num">02 — Mentorship</span>
+        <div class="about-pillar-title">Your guide in<br />your industry.</div>
+        <p class="about-pillar-desc">One-on-one pairing with someone from your specific career field who walks alongside your professional and spiritual growth.</p>
       </div>
       <div class="about-pillar reveal reveal-delay-2" data-num="3">
         <div class="about-pillar-icon">
@@ -1951,12 +1962,12 @@
     <div class="for-grid">
       <div class="for-card for-card-yes reveal">
         <p class="for-card-label">This IS for you if...</p>
-        <h3 class="for-card-title">You believe your work is part of something greater.</h3>
+        <h3 class="for-card-title">You believe your work is part of God's design for the world.</h3>
         <ul class="for-list">
           <li>You don't want to separate faith from your career</li>
-          <li>You're hungry to grow — spiritually, personally, professionally</li>
+          <li>You're hungry to grow and be developed — spiritually, personally, professionally</li>
           <li>You want clarity, direction, and mentorship</li>
-          <li>You're in business, healthcare, education, or beyond</li>
+          <li>You want to understand how your job plays a role in God's plan to reach the world</li>
           <li>You want to pursue excellence and contribute to human flourishing</li>
           <li>You want to play a meaningful role in church planting</li>
         </ul>
@@ -1985,7 +1996,7 @@
     <div class="how-header">
       <span class="eyebrow reveal">Program Structure</span>
       <h2 class="display-serif how-headline reveal reveal-delay-1">
-        What does a<br /><em>month look like?</em>
+        What does a<br /><em>typical month look like?</em>
       </h2>
     </div>
     <div class="how-steps">
@@ -2014,7 +2025,7 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
         </div>
         <h3 class="how-step-title">Leadership Development Guide</h3>
-        <p class="how-step-desc">Meet monthly with your personal guide — someone in your career industry matched specifically to you. They walk alongside you and invest in your growth directly.</p>
+        <p class="how-step-desc">Meet monthly with a guide matched to your industry. Together you'll build a personalized career development plan over the two years — someone investing directly in where you're going.</p>
       </div>
     </div>
   </div>
@@ -2112,7 +2123,7 @@
           An <em>investment</em> in your calling.
         </h2>
         <p class="investment-body reveal reveal-delay-2">
-          Growth is never without cost. Renewal Residency asks you to show up — financially, and with your time. What you receive in return is mentorship, community, clarity, and a foundation that shapes the arc of your career and your faith.
+          Growth is never without cost. Renewal Residency asks you to show up — financially, and with your time. What you receive in return is mentorship, community, a vision, a global network, and a foundation that shapes the arc of your career and your faith.
         </p>
       </div>
       <div class="investment-cards">
@@ -2121,7 +2132,7 @@
           <div class="investment-card-sep"></div>
           <div class="investment-card-right">
             <p class="investment-card-label">Program Investment</p>
-            <p class="investment-card-note">Annual program fee covering mentorship, cohort events, and vision trips.</p>
+            <p class="investment-card-note">Total program fee covering mentorship, cohort events, and vision trips.</p>
           </div>
         </div>
         <div class="investment-card reveal reveal-delay-2">
@@ -2129,7 +2140,7 @@
           <div class="investment-card-sep"></div>
           <div class="investment-card-right">
             <p class="investment-card-label">Hours Per Week</p>
-            <p class="investment-card-note">Time commitment for forums, peer groups, and guide meetings each month.</p>
+            <p class="investment-card-note">Time commitment for forums, peer groups, guide meetings, and curated material and content each month.</p>
           </div>
         </div>
         <div class="investment-card reveal reveal-delay-3">
@@ -2165,23 +2176,13 @@
             <div class="process-step-connector"></div>
           </div>
           <div class="process-step-body">
-            <h3 class="process-step-title">Submit Your Application</h3>
-            <p class="process-step-desc">Fill out the interest form with your background, current role, and what draws you to the program.</p>
-          </div>
-        </div>
-        <div class="process-step">
-          <div class="process-step-line">
-            <div class="process-step-dot">2</div>
-            <div class="process-step-connector"></div>
-          </div>
-          <div class="process-step-body">
             <h3 class="process-step-title">Interest Meeting</h3>
             <p class="process-step-desc">We'll send you a Zoom link to an upcoming interest meeting where you can ask questions and learn more before committing.</p>
           </div>
         </div>
         <div class="process-step">
           <div class="process-step-line">
-            <div class="process-step-dot">3</div>
+            <div class="process-step-dot">2</div>
             <div class="process-step-connector"></div>
           </div>
           <div class="process-step-body">
@@ -2191,7 +2192,7 @@
         </div>
         <div class="process-step">
           <div class="process-step-line">
-            <div class="process-step-dot">4</div>
+            <div class="process-step-dot">3</div>
             <div class="process-step-connector"></div>
           </div>
           <div class="process-step-body">
@@ -2243,14 +2244,14 @@
   <div class="container">
     <div class="director-inner">
       <div class="director-photo-wrap reveal">
-        <img class="director-photo" src="https://placehold.co/380x507/e8ddd0/c13b28" alt="Julie Scrudato" />
+        <img class="director-photo" src="brand_assets/scrudato-20.jpeg" alt="Julie Scrudato" />
       </div>
       <div class="director-content">
         <span class="eyebrow reveal">Program Director</span>
         <h2 class="director-name reveal reveal-delay-1">Julie Scrudato</h2>
         <p class="director-title reveal reveal-delay-2">Director, Renewal Residency · Summit Church</p>
         <div class="director-bio reveal reveal-delay-3">
-          <p>Julie Scrudato is the founding director of Renewal Residency, bringing years of experience in leadership development and marketplace ministry to the program. She is passionate about equipping the next generation of professionals to integrate their faith with their daily work in meaningful, lasting ways. Julie is based in Raleigh-Durham and is deeply rooted in the Summit Church community.</p>
+          <p>Julie Scrudato is the founding director of Renewal Residency, bringing years of experience in leadership development to the program. She is passionate about equipping the next generation of professionals to integrate their faith with their daily work in meaningful, lasting ways. Julie is based in Raleigh-Durham and is deeply rooted in the Summit Church community.</p>
         </div>
         <div class="reveal reveal-delay-4">
           <a href="mailto:jscrudato@summitchurch.com" class="btn btn-outline">Contact Julie with Questions</a>
@@ -2320,7 +2321,7 @@
             Is this only for people at Summit Church?
             <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </summary>
-          <p class="faq-answer">No — Renewal Residency is open to anyone in the Raleigh-Durham area who shares our values around faith, work, and mission. You don't need to be a member of Summit Church to apply, though the program is deeply rooted in the Summit community.</p>
+          <p class="faq-answer">Currently, yes — Renewal Residency is a program of Summit Church and membership is required to participate. We're deeply committed to this being rooted in a local church community, not just a standalone program. That said, we hope to expand access in the future, so if you're not yet a member but are interested, reach out and let's talk.</p>
         </details>
 
         <details class="faq-item">
@@ -2328,7 +2329,7 @@
             How much does it cost?
             <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </summary>
-          <p class="faq-answer">The program fee is $5,000 per year for a two-year commitment. This covers your guide relationship, cohort forums, curated experiences, and vision trips. If cost is a barrier, reach out to us — we want to have that conversation.</p>
+          <p class="faq-answer">The total program fee is $5,000 — a one-time investment for the full two years. This covers travel expenses for vision trips, forum speakers, curated materials and content, experiential programming, and the various costs that make the residency what it is. If cost is a barrier, reach out — we want to have that conversation.</p>
         </details>
 
         <details class="faq-item">
@@ -2344,7 +2345,7 @@
             What industries is this designed for?
             <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </summary>
-          <p class="faq-answer">All of them. We've had residents from business, healthcare, education, tech, law, finance, and more. Your guide will be matched from your specific industry, so the mentorship is always relevant to your context.</p>
+          <p class="faq-answer">All of them. We've had residents from business, healthcare, education, tech, law, finance, entrepreneurship, and more. Your guide will be matched from your specific industry, so the mentorship is always directly relevant to your work.</p>
         </details>
 
         <details class="faq-item">
@@ -2360,7 +2361,7 @@
             How many people are in a cohort?
             <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </summary>
-          <p class="faq-answer">Cohorts are kept intentionally small to maintain a high-quality experience and genuine community. We limit enrollment to ensure every resident gets meaningful attention from their guide and real relationships within the cohort.</p>
+          <p class="faq-answer">Cohorts are kept intentionally small — around 15–20 people — to maintain a high-quality experience and genuine community. We limit enrollment to ensure every resident gets meaningful attention from their guide and real relationships within the cohort.</p>
         </details>
 
         <details class="faq-item">
@@ -2368,7 +2369,7 @@
             What happens after the two years?
             <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
           </summary>
-          <p class="faq-answer">You become part of the Renewal alumni network — a growing community of professionals in the Raleigh-Durham area and beyond who share your conviction that work and faith belong together. We're building something that lasts well beyond the program itself.</p>
+          <p class="faq-answer">You become part of the Renewal alumni network — a growing global community of professionals who share your conviction that work and faith belong together. Through the international and domestic trips, you'll have built relationships with leaders and church planters around the world. That network doesn't end at graduation; it's one of the most lasting things you take with you.</p>
         </details>
 
       </div>
