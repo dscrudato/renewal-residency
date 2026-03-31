@@ -1730,8 +1730,32 @@
         --gap-lg: 3rem;
       }
       .hero-stat-strip { display: none; }
-      .hero { padding-bottom: var(--gap-lg); }
+      .hero {
+        justify-content: center;
+        min-height: 100svh;
+        padding-top: 80px;
+        padding-bottom: var(--gap-lg);
+      }
+      .hero::after {
+        bottom: -20%;
+        right: -40%;
+        width: 130vw;
+        border-color: rgba(193,59,40,0.14);
+      }
+      .hero::before {
+        bottom: -32%;
+        right: -55%;
+        width: 140vw;
+        border-color: rgba(193,59,40,0.08);
+      }
+      .hero-glow {
+        width: 100vw;
+        background: radial-gradient(ellipse at 60% 20%, rgba(193,59,40,0.13) 0%, transparent 60%);
+      }
+      .hero-content { padding-bottom: 0; }
       .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-headline { font-size: clamp(3.8rem, 14vw, 5.5rem); }
+      .hero-sub { font-size: 1.05rem; max-width: 90%; }
     }
   </style>
 </head>
