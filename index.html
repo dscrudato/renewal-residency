@@ -122,12 +122,18 @@
     .nav-logo {
       display: flex;
       align-items: center;
+      overflow: hidden;
+      height: 58px;
     }
     .nav-logo img {
-      height: 44px;
+      height: 100px;
       width: auto;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
+      margin-top: -10px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 600px) {
+      .nav-logo { height: 48px; }
+      .nav-logo img { height: 82px; margin-top: -8px; }
     }
     .nav-links {
       display: flex;
@@ -1686,10 +1692,15 @@
       flex-wrap: wrap;
       gap: var(--gap-md);
     }
+    .footer-logo {
+      overflow: hidden;
+      height: 50px;
+    }
     .footer-logo img {
-      height: 36px;
+      height: 86px;
       width: auto;
-      opacity: 0.7;
+      margin-top: -9px;
+      opacity: 0.85;
       filter: brightness(0) invert(1);
     }
     .footer-text {
