@@ -650,7 +650,9 @@
     ════════════════════════════════════════════════════════ */
     .for-section {
       padding-block: var(--gap-xl);
-      background: linear-gradient(to bottom, var(--cream) 70%, var(--cream-dark) 100%);
+      background: var(--ink);
+      color: var(--cream);
+      border-top: 1px solid rgba(245,239,227,0.07);
     }
     .for-header {
       text-align: center;
@@ -662,10 +664,11 @@
       font-size: clamp(2.6rem, 5vw, 4.5rem);
       font-weight: 300;
       margin-top: 0.75rem;
+      color: var(--cream);
     }
     .for-header .display-serif em {
       font-style: italic;
-      color: var(--red);
+      color: var(--red-light);
     }
     .for-grid {
       display: grid;
@@ -683,8 +686,9 @@
       color: white;
     }
     .for-card-no {
-      background: var(--ink);
+      background: rgba(245,239,227,0.08);
       color: var(--cream);
+      border: 1px solid rgba(245,239,227,0.18);
     }
     .for-card-label {
       font-size: 0.68rem;
@@ -729,7 +733,7 @@
       background: var(--red-light);
     }
     .for-card-yes .for-list li { color: rgba(255,255,255,0.88); }
-    .for-card-no .for-list li { color: rgba(245,239,227,0.7); }
+    .for-card-no .for-list li { color: rgba(245,239,227,0.85); }
 
     @media (max-width: 720px) {
       .for-grid { grid-template-columns: 1fr; }
