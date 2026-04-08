@@ -1,0 +1,223 @@
+<!--
+  STASHED: Board of Advisors section
+  Drop the <style> block into the <style> tag in index.html (before the FOOTER block),
+  and the <section> block into the HTML after the DIRECTOR section / before TESTIMONIALS.
+-->
+
+<!-- ─── CSS ─────────────────────────────────────────────── -->
+<style>
+    /* ════════════════════════════════════════════════════════
+       ADVISORS
+    ════════════════════════════════════════════════════════ */
+    .advisors {
+      padding-block: var(--gap-xl);
+      background: var(--cream-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .advisors::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(193,59,40,0.18), transparent);
+    }
+    .advisors-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-lg);
+      align-items: end;
+      margin-bottom: var(--gap-lg);
+    }
+    .advisors-headline {
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+      font-weight: 300;
+      margin-top: 0.75rem;
+    }
+    .advisors-headline em { font-style: italic; color: var(--red); }
+    .advisors-subtext {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      max-width: 420px;
+      justify-self: end;
+      align-self: end;
+      padding-bottom: 0.25rem;
+    }
+    .advisors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: var(--gap-lg);
+    }
+    .advisor-card {
+      background: var(--cream);
+      border-radius: 4px;
+      padding: 1.75rem;
+      border: 1px solid rgba(193,59,40,0.1);
+      box-shadow: 0 2px 12px rgba(28,16,10,0.05), 0 1px 3px rgba(28,16,10,0.04);
+      transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    }
+    .advisor-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(28,16,10,0.09), 0 2px 6px rgba(28,16,10,0.05);
+    }
+    .advisor-card-top {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .advisor-initials {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--red);
+      color: var(--cream);
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+    .advisor-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .advisor-role {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-top: 0.15rem;
+    }
+    .advisor-bio {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    /* Logo strip */
+    .advisors-logos {
+      border-top: 1px solid rgba(193,59,40,0.12);
+      padding-top: var(--gap-md);
+      text-align: center;
+    }
+    .advisors-logos-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+    }
+    .advisors-logos-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 2.5rem;
+    }
+    .advisor-logo-item {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.35;
+      transition: opacity 0.25s var(--ease-out);
+    }
+    .advisor-logo-item:hover { opacity: 0.7; }
+    .advisor-logo-sep {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(193,59,40,0.3);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .advisors-header { grid-template-columns: 1fr; gap: var(--gap-md); }
+      .advisors-subtext { justify-self: start; }
+      .advisors-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .advisors-grid { grid-template-columns: 1fr; }
+    }
+</style>
+
+<!-- ─── HTML (goes after DIRECTOR, before TESTIMONIALS) ─── -->
+<!-- ─── BOARD OF ADVISORS ────────────────────────────── -->
+<section class="advisors">
+  <div class="container">
+    <div class="advisors-header">
+      <div>
+        <span class="eyebrow reveal">Board of Advisors</span>
+        <h2 class="display-serif advisors-headline reveal reveal-delay-1">
+          Guided by leaders who've<br /><em>walked the path.</em>
+        </h2>
+      </div>
+      <p class="advisors-subtext reveal reveal-delay-2">
+        Our advisors are seasoned executives and ministry leaders who invest directly in cohort members — offering career counsel, industry connections, and the kind of wisdom that only comes from experience.
+      </p>
+    </div>
+    <div class="advisors-grid">
+      <div class="advisor-card reveal">
+        <div class="advisor-card-top">
+          <div class="advisor-initials">M</div>
+          <div>
+            <div class="advisor-name">Matt Harrison</div>
+            <div class="advisor-role">VP of Leadership Development · Apex Global</div>
+          </div>
+        </div>
+        <p class="advisor-bio">Matt brings 15 years of experience building leadership pipelines inside Fortune 500 organizations, most recently as VP of Leadership Development at a global technology consulting firm. He has a rare ability to bridge executive talent strategy with the deeper questions of purpose and calling that define a life well-lived.</p>
+      </div>
+      <!-- Placeholder cards for remaining ~9 advisors -->
+      <div class="advisor-card reveal reveal-delay-1" style="opacity:0.45;">
+        <div class="advisor-card-top">
+          <div class="advisor-initials" style="background:var(--ink-soft);">·</div>
+          <div>
+            <div class="advisor-name" style="color:var(--ink-soft);">Advisor Name</div>
+            <div class="advisor-role">Title · Company</div>
+          </div>
+        </div>
+        <p class="advisor-bio">[Bio coming soon]</p>
+      </div>
+      <div class="advisor-card reveal reveal-delay-2" style="opacity:0.45;">
+        <div class="advisor-card-top">
+          <div class="advisor-initials" style="background:var(--ink-soft);">·</div>
+          <div>
+            <div class="advisor-name" style="color:var(--ink-soft);">Advisor Name</div>
+            <div class="advisor-role">Title · Company</div>
+          </div>
+        </div>
+        <p class="advisor-bio">[Bio coming soon]</p>
+      </div>
+    </div>
+    <div class="advisors-logos reveal">
+      <div class="advisors-logos-label">Advisors represent organizations including</div>
+      <div class="advisors-logos-row">
+        <span class="advisor-logo-item">Apex Global</span>
+        <span class="advisor-logo-sep"></span>
+        <span class="advisor-logo-item">Meridian Health</span>
+        <span class="advisor-logo-sep"></span>
+        <span class="advisor-logo-item">Crestline Capital</span>
+        <span class="advisor-logo-sep"></span>
+        <span class="advisor-logo-item">Vantage Partners</span>
+        <span class="advisor-logo-sep"></span>
+        <span class="advisor-logo-item">Cornerstone Ventures</span>
+        <span class="advisor-logo-sep"></span>
+        <span class="advisor-logo-item">Ironwood Strategy</span>
+      </div>
+    </div>
+  </div>
+</section>
