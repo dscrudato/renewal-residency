@@ -1598,6 +1598,7 @@
       max-width: 440px;
       margin-inline: auto;
       margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
     .interest-input {
       flex: 1;
@@ -1615,6 +1616,11 @@
     .interest-input:focus {
       border-color: rgba(255,255,255,0.6);
       background: rgba(255,255,255,0.15);
+    }
+    @media (max-width: 520px) {
+      .interest-form { flex-direction: column; }
+      .interest-input { width: 100%; flex: unset; }
+      .interest-form .btn { width: 100%; justify-content: center; white-space: normal; }
     }
     .interest-divider {
       display: flex;
@@ -2362,7 +2368,7 @@
         <p class="director-title reveal reveal-delay-2">Director, Renewal Residency · Summit Church</p>
         <div class="director-bio reveal reveal-delay-3">
           <p>Julie Scrudato is the founding director of Renewal Residency, bringing years of experience in leadership development to the program. She is passionate about equipping the next generation of professionals to integrate their faith with their daily work in meaningful, lasting ways.</p>
-          <p>Julie and her husband, Daniel are a member of Summit Church's Blue Ridge campus, where they are deeply rooted. Together they are raising two bundles of joy.</p>
+          <p>Julie and her husband, Daniel are members of Summit Church's Blue Ridge campus, where they are deeply rooted. Together they are raising two bundles of joy.</p>
         </div>
         <div class="reveal reveal-delay-4">
           <a href="mailto:jscrudato@summitchurch.com" class="btn btn-outline">Contact Julie with Questions</a>
@@ -2385,12 +2391,12 @@
       <div class="testimonial-card reveal">
         <div>
           <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text" style="opacity:0.45;">[placeholder]</p>
+          <p class="testimonial-text">This program not only gave me a framework for being intentional about my faith in my career, but also connected me to a network of people united around the same purpose.</p>
         </div>
         <div class="testimonial-attr">
-          <div class="testimonial-avatar">R</div>
+          <div class="testimonial-avatar">P</div>
           <div>
-            <span class="testimonial-name">Renewal Class of '27 Member</span>
+            <span class="testimonial-name">Paul Wei</span>
             <span class="testimonial-role">Software Engineer</span>
           </div>
         </div>
@@ -2398,13 +2404,13 @@
       <div class="testimonial-card reveal reveal-delay-1">
         <div>
           <span class="testimonial-quote-mark">"</span>
-          <p class="testimonial-text" style="opacity:0.45;">[placeholder]</p>
+          <p class="testimonial-text">Renewal Residency affirmed the dignity of all work and showed me that I can offer meaningful service to God at every stage of my career. This program helped me understand that full-time secular work doesn't make you a second class citizen in the Kingdom of God, but God has a unique purpose for you and your work!</p>
         </div>
         <div class="testimonial-attr">
-          <div class="testimonial-avatar">R</div>
+          <div class="testimonial-avatar">A</div>
           <div>
-            <span class="testimonial-name">Renewal Class of '27 Member</span>
-            <span class="testimonial-role">Healthcare Professional</span>
+            <span class="testimonial-name">Avery Bain</span>
+            <span class="testimonial-role">Assistant Media Manager</span>
           </div>
         </div>
       </div>
