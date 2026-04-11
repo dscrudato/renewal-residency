@@ -953,19 +953,22 @@
     }
     .experience-item {
       display: grid;
-      grid-template-columns: 100px 1fr auto;
+      grid-template-columns: 100px 1fr;
       gap: 2.5rem;
       align-items: center;
       padding-block: 2.75rem;
       border-bottom: 1px solid rgba(245,239,227,0.08);
-      transition: background 0.25s;
+      transition: background 0.25s, border-color 0.25s;
       cursor: default;
       border-radius: 2px;
       margin-inline: -1.5rem;
       padding-inline: 1.5rem;
     }
     .experience-item:last-child { border-bottom: none; }
-    .experience-item:hover { background: rgba(245,239,227,0.04); }
+    .experience-item:hover {
+      background: rgba(245,239,227,0.04);
+      border-color: rgba(245,239,227,0.16);
+    }
     .experience-num {
       font-family: var(--font-display);
       font-size: 4.5rem;
@@ -998,49 +1001,21 @@
       color: var(--cream);
       line-height: 1.15;
       margin-bottom: 0.6rem;
+      transition: color 0.25s;
     }
     .experience-desc {
       font-size: 0.92rem;
       color: rgba(245,239,227,0.6);
       line-height: 1.7;
       max-width: 560px;
+      transition: color 0.25s;
     }
-    .experience-arrow {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 1px solid rgba(245,239,227,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.25s, border-color 0.25s, transform 0.3s var(--ease-spring);
-    }
-    .experience-arrow svg {
-      width: 16px;
-      height: 16px;
-      fill: none;
-      stroke: var(--red-light);
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      opacity: 0.6;
-      transition: opacity 0.25s;
-    }
-    .experience-item:hover .experience-arrow {
-      background: var(--red);
-      border-color: var(--red);
-      transform: rotate(45deg);
-    }
-    .experience-item:hover .experience-arrow svg {
-      stroke: white;
-      opacity: 1;
-    }
+    .experience-item:hover .experience-title { color: white; }
+    .experience-item:hover .experience-desc { color: rgba(245,239,227,0.78); }
 
     @media (max-width: 860px) {
       .experiences-header { grid-template-columns: 1fr; gap: var(--gap-md); }
       .experience-item { grid-template-columns: 60px 1fr; gap: 1.5rem; }
-      .experience-arrow { display: none; }
       .experience-num { font-size: 3rem; }
     }
 
@@ -2162,9 +2137,6 @@
           <h3 class="experience-title">Faith & Work Conference</h3>
           <p class="experience-desc">A curated gathering at the intersection of faith and professional life. Hear from practitioners, leaders, and thinkers who are living out the integration you're pursuing — and connect with others doing the same.</p>
         </div>
-        <div class="experience-arrow">
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
       </div>
 
       <div class="experience-item reveal reveal-delay-1">
@@ -2173,9 +2145,6 @@
           <span class="experience-tag">Global Immersion</span>
           <h3 class="experience-title">International Networking & Vision Trip</h3>
           <p class="experience-desc">Travel with your cohort to meet global leaders, experience church planting on the ground, and see how the marketplace and mission intersect beyond American borders. A perspective-altering week.</p>
-        </div>
-        <div class="experience-arrow">
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
       </div>
 
@@ -2186,9 +2155,6 @@
           <h3 class="experience-title">Domestic Church Planting & Networking Trip</h3>
           <p class="experience-desc">Visit a church plant in another U.S. city, meet the team, and see how professionals are embedding themselves in new communities for the sake of the gospel. Builds your vision for what's possible close to home.</p>
         </div>
-        <div class="experience-arrow">
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
       </div>
 
       <div class="experience-item reveal reveal-delay-3">
@@ -2198,9 +2164,6 @@
           <h3 class="experience-title">Visit Local Business Headquarters</h3>
           <p class="experience-desc">Get behind the scenes at leading companies in the Raleigh-Durham area. Meet executives who integrate their faith in the workplace and gain access to networks that aren't available anywhere else.</p>
         </div>
-        <div class="experience-arrow">
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </div>
       </div>
 
       <div class="experience-item reveal reveal-delay-4">
@@ -2209,9 +2172,6 @@
           <span class="experience-tag">Personal Growth</span>
           <h3 class="experience-title">Personalized Development Plan</h3>
           <p class="experience-desc">Work alongside your guide to build a development plan tailored to where you are and where you're going — covering career trajectory, spiritual formation, and leadership growth over the two years.</p>
-        </div>
-        <div class="experience-arrow">
-          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
       </div>
 
